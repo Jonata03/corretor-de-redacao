@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdd9e67b-1576-482b-bb7d-44a25ebf0301" name="Changes" comment="integração com vuetify">
-      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/components/tela2.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/store/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/src/components/icons/teste.vue" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/components/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corretor redacao app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corretor redacao app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/corretor redacao app/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,12 +47,20 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Jonata03&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "history": [
+    {
+      "searchQuery": "main",
+      "state": "OPEN",
+      "assignee": "Jonata03"
+    }
+  ],
+  "lastFilter": {
+    "searchQuery": "main",
+    "state": "OPEN",
+    "assignee": "Jonata03"
   }
-}</component>
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Jonata03/Faculdade-TSI.git&quot;,
@@ -76,7 +83,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.run api.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "integracao-vuex",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/jonat/OneDrive/Área de Trabalho/estudos/FACULDADE/4º semestre 2 parte/atividade de extensao/corretor de redacao",
     "node.js.detected.package.eslint": "true",
