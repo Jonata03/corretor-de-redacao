@@ -7,6 +7,7 @@ import { createVuetify } from 'vuetify'
 import 'vuetify/styles' // Importa os estilos base do Vuetify
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import router from './router'
+import store from './store'
 
 const vuetify = createVuetify({
     icons: {
@@ -21,6 +22,7 @@ const vuetify = createVuetify({
 const app = createApp(App)
 app.use(router)
 app.use(vuetify)
+app.use(store)
 app.config.globalProperties.$axios = axios
 
 app.mount('#app')
