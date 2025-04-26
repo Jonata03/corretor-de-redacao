@@ -1,5 +1,9 @@
 <template>
-  <v-btn color="primary">Clique aqui</v-btn>
+  <v-app>
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 <script>
 export default {
