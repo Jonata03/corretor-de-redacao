@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdd9e67b-1576-482b-bb7d-44a25ebf0301" name="Changes" comment="removendo componentes inuteis e integrando o axios pra integracao com back">
+    <list default="true" id="bdd9e67b-1576-482b-bb7d-44a25ebf0301" name="Changes" comment="integração com vuetify">
+      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/components/tela2.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/corretor redacao app/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corretor redacao app/src/components/icons/teste.vue" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/components/Home.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/corretor redacao app/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/vite.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +42,7 @@
     <option name="FILTER_BY_REPOSITORY_IN_POPUP" value="false" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="integracao_vuetify" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,7 +76,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.run api.executor": "Run",
-    "git-widget-placeholder": "integracao__vuetify",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/jonat/OneDrive/Área de Trabalho/estudos/FACULDADE/4º semestre 2 parte/atividade de extensao/corretor de redacao",
     "node.js.detected.package.eslint": "true",
@@ -140,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744770210538</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="integração com vuetify">
+      <option name="closed" value="true" />
+      <created>1745684993240</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1745684993240</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +168,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="meu segundo commit" />
     <MESSAGE value="removendo componentes inuteis e integrando o axios pra integracao com back" />
-    <option name="LAST_COMMIT_MESSAGE" value="removendo componentes inuteis e integrando o axios pra integracao com back" />
+    <MESSAGE value="integração com vuetify" />
+    <option name="LAST_COMMIT_MESSAGE" value="integração com vuetify" />
   </component>
 </project>
