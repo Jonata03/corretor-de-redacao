@@ -4,10 +4,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import axios from 'axios'
 import { createVuetify } from 'vuetify'
-import 'vuetify/styles' // Importa os estilos base do Vuetify
+import 'vuetify/styles'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import router from './router'
 import store from './store'
+import '@mdi/font/css/materialdesignicons.css'
 
 const vuetify = createVuetify({
     icons: {
