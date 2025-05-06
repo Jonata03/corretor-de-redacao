@@ -1,4 +1,5 @@
 <template>
+  <div>
     <barra-navegar-reescrever/>
   <v-container>
     <v-card class="ma-2 d-flex justify-center  align-center flex-column">
@@ -51,6 +52,7 @@
       </v-list>
     </v-card>
   </v-container>
+  </div>
 </template>
 <script>
 import BarraNavegarReescrever from '@/components/barraNevegacao/BarraNavegarReescrever.vue'
