@@ -1,5 +1,86 @@
+<!--
 <template>
-    <barra-navegar-reescrever/>
+  <v-container>
+    <v-card class="pa-4" @mouseup="handleSelection">
+      <div v-html="highlightedHtml"></div>
+    </v-card>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      originalText: `Você pode marcar várias partes deste texto. Mesmo se ele repetir uma frase, você consegue destacar apenas onde quiser.mo se ele repetir uma frase, você consegue destacar apenas onde quiser.`,
+      highlights: [], // Array de { start: Number, end: Number }
+    };
+  },
+  computed: {
+    highlightedHtml() {
+      let result = '';
+      let lastIndex = 0;
+
+      // Ordena os trechos por início para evitar sobreposição fora de ordem
+      const sortedHighlights = [...this.highlights].sort((a, b) => a.start - b.start);
+
+      sortedHighlights.forEach(({ start, end }) => {
+        // Adiciona o texto antes do destaque
+        result += this.escapeHTML(this.originalText.slice(lastIndex, start));
+        // Adiciona o trecho destacado
+        result += `<span style="background-color: yellow;">${this.escapeHTML(this.originalText.slice(start, end))}</span>`;
+        lastIndex = end;
+      });
+
+      // Adiciona o restante do texto após o último destaque
+      result += this.escapeHTML(this.originalText.slice(lastIndex));
+
+      return result;
+    },
+  },
+  methods: {
+    handleSelection() {
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+
+      const range = selection.getRangeAt(0);
+      const selectedText = selection.toString().trim();
+      if (!selectedText) return;
+
+      const container = range.commonAncestorContainer;
+      if (!this.isPartOfText(container)) return;
+
+      // Calcula o offset dentro do texto completo
+      const preSelectionRange = range.cloneRange();
+      preSelectionRange.selectNodeContents(this.$el.querySelector('div'));
+      preSelectionRange.setEnd(range.startContainer, range.startOffset);
+      const start = preSelectionRange.toString().length;
+      const end = start + selectedText.length;
+
+      // Evita duplicatas (por posição)
+      if (!this.highlights.some(h => h.start === start && h.end === end)) {
+        this.highlights.push({ start, end });
+      }
+
+      // Limpa a seleção para melhor UX
+      selection.removeAllRanges();
+    },
+    isPartOfText(node) {
+      return node.nodeType === Node.TEXT_NODE || (node.childNodes && [...node.childNodes].some(n => n.nodeType === Node.TEXT_NODE));
+    },
+    escapeHTML(str) {
+      return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+    },
+  },
+};
+</script>
+-->
+
+
+<template>
+  <barra-navegar-reescrever/>
   <v-container>
     <v-card class="ma-2 d-flex justify-center  align-center flex-column">
       <v-card-title>
@@ -12,43 +93,35 @@
         <botao-compartilhar @compartilhar="compartilhar"/>
       </v-card-actions>
     </v-card>
-    <div class="d-flex flex-row">
-    <competencia v-for="competencia in competencias"
-                 :titulo="competencia.titulo"
-                 :corTitulo="competencia.corTitulo"
-                 :totalObtido="competencia.totalObtido"
-                 :totalMaximo="competencia.totalMaximo"
-                 class="d-flex flex-column"
-    />
+    <div class="d-flex flex-row flex-wrap justify-start">
+      <competencia
+          v-for="competencia in competencias"
+          :key="competencia.titulo"
+          :titulo="competencia.titulo"
+          :corTitulo="competencia.corTitulo"
+          :totalObtido="competencia.totalObtido"
+          :totalMaximo="competencia.totalMaximo"
+          class="ma-2"
+          style="flex: 1 1 250px; max-width: 100%;"
+      />
     </div>
     <v-card class="ma-2 d-flex justify-center  align-center flex-column">
-       <v-container class="card pa-1">
-         <button class="pa-1 mr-2 ">
-           <v-icon color="yellow">mdi-star</v-icon>
-           <span class="text-uppercase">  comentar</span>
-         </button>
-         <button>
-           <v-icon color="blue">mdi-marker</v-icon>
-           <span class="text-uppercase"> demarcar</span>
-         </button>
-       </v-container>
-      <v-list width="100%">
-        <v-list-item>
-            <v-list-item-title class="text-wrap subtitle">O silêncio do cuidado: a invisibilidade do trabalho feminino no Brasil</v-list-item-title>
-            <p class="text-wrap">
-
-              No romance Quarto de Despejo, Carolina Maria de Jesus revela a dura realidade das mulheres negras e pobres que,<br>
-              mesmo sustentando suas famílias com trabalho e afeto, permanecem à margem da sociedade. Essa obra ainda ecoa nos dias atuais, quando o trabalho de cuidado — como limpar, cozinhar e cuidar de filhos ou idosos — segue sendo realizado majoritariamente por mulheres, muitas vezes sem remuneração, reconhecimento ou garantias. A invisibilidade dessa forma de trabalho não é apenas uma herança histórica, mas também um reflexo das desigualdades estruturais de gênero que persistem no Brasil.
-
-              Em primeiro lugar, é preciso destacar que o trabalho de cuidado é fundamental para o funcionamento da sociedade, ainda que pouco valorizado. Segundo o IBGE, mulheres dedicam quase o dobro do tempo dos homens a afazeres domésticos e cuidados de pessoas. Essa sobrecarga contribui para a desigualdade no mercado de trabalho, já que limita a inserção e ascensão das mulheres em empregos formais e bem remunerados. Assim, perpetua-se um ciclo de desigualdade econômica e social que atinge, sobretudo, as mulheres negras e periféricas.
-
-              Além disso, a desvalorização desse tipo de trabalho está ligada à construção cultural do papel feminino. Desde a infância, meninas são ensinadas a cuidar, servir e se responsabilizar pela família, como se essas tarefas fossem uma obrigação natural, e não uma escolha. Esse processo, reforçado por discursos midiáticos e educacionais, invisibiliza o esforço e a competência exigidos nesse cuidado, desconsiderando-o como um trabalho legítimo.
-
-              Para enfrentar esse cenário, é imprescindível a formulação de políticas públicas que reconheçam e valorizem o trabalho de cuidado. O Estado deve ampliar a oferta de creches públicas em tempo integral, o que permitiria às mulheres maior autonomia para trabalhar ou estudar. Além disso, é essencial incluir na Base Nacional Comum Curricular (BNCC) conteúdos que discutam equidade de gênero desde os anos iniciais da educação básica, promovendo uma mudança cultural duradoura. Campanhas de conscientização, articuladas pelos Ministérios da Mulher e da Educação, também podem contribuir para desnaturalizar a ideia de que cuidar é uma obrigação feminina.
-
-              Portanto, romper com a invisibilidade do trabalho de cuidado é uma tarefa urgente e coletiva. Tal como Carolina Maria de Jesus escancarou em sua obra o peso invisível que carregava, cabe hoje à sociedade brasileira reconhecer, valorizar e compartilhar o cuidado como responsabilidade de todos.</p>
-        </v-list-item>
-      </v-list>
+      <v-container class="card pa-1">
+        <button class="pa-1 mr-2 ">
+          <v-icon color="yellow">mdi-star</v-icon>
+          <span class="text-uppercase">  comentar</span>
+        </button>
+        <button>
+          <v-icon color="blue">mdi-marker</v-icon>
+          <span class="text-uppercase"> demarcar</span>
+        </button>
+      </v-container>
+      <div class="lined-paper">
+      <textarea
+          class="lined-textarea"
+          placeholder="Escreva sua redação aqui..."
+      ></textarea>
+      </div>
     </v-card>
   </v-container>
 </template>
@@ -57,16 +130,18 @@ import BarraNavegarReescrever from '@/components/barraNevegacao/BarraNavegarRees
 import BotaoCompartilhar from '@/components/BotaoCompartilhar.vue'
 import Competencia from "@/components/cards/Competencia.vue";
 import AreaTexto from "@/components/AreaTexto.vue";
+
 export default {
   name: 'CorrecaoRedacao',
   components: {Competencia, BarraNavegarReescrever, BotaoCompartilhar, AreaTexto},
   data() {
     return {
-      competencias:[{
+      competencias: [{
         titulo: 'Competência 1',
         corTitulo: 'green',
         totalObtido: 200,
-        totalMaximo: 200},
+        totalMaximo: 200
+      },
         {
           titulo: 'Competência 2',
           corTitulo: 'orange',
@@ -105,12 +180,53 @@ export default {
 };
 </script>
 <style scoped>
-  .pontuacao{
-    font-size: 2em;
-    font-weight: bold;
-    color: #4CAF50;
-  }
-  .card{
-    border-bottom: solid gray 1px;
-  }
+.pontuacao {
+  font-size: 2em;
+  font-weight: bold;
+  color: #4CAF50;
+}
+.lined-paper {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+.lined-paper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 22px,
+      #ccc 24px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lined-textarea {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  background: transparent;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 0 8px;
+  outline: none;
+  z-index: 1;
+}
+
+.card {
+  border-bottom: solid gray 1px;
+}
 </style>

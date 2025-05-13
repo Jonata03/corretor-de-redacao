@@ -4,23 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bdd9e67b-1576-482b-bb7d-44a25ebf0301" name="Changes" comment="stash">
-      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/components/AreaTexto.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/components/BotaoCompartilhar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/components/barraNevegacao/BarraNavegarReescrever.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/components/cards/Competencia.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/components/modal/ModalAlert.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/corretor redacao app/src/pages/CorrecaoRedacao.vue" afterDir="false" />
+    <list default="true" id="bdd9e67b-1576-482b-bb7d-44a25ebf0301" name="Changes" comment="desenvolvimento da ultima pagina de visualizar a redacao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/corretor redacao app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/src/assets/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/assets/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/assets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corretor redacao app/src/pages/CorrecaoRedacao.vue" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/pages/CorrecaoRedacao.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/corretor redacao app/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corretor redacao app/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/corretor redacao app/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,41 +76,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.run api.executor": "Run",
-    "git-widget-placeholder": "visualizar-redacao",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/jonat/OneDrive/Área de Trabalho/estudos/FACULDADE/4º semestre 2 parte/atividade de extensao/corretor de redacao",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.run app.executor": "Run",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "configurable.group.editor",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.run api.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;visualizar-redacao&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jonat/OneDrive/Área de Trabalho/estudos/FACULDADE/4º semestre 2 parte/atividade de extensao/corretor de redacao&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.run app.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2024.1.3\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jonat\OneDrive\Área de Trabalho\estudos\FACULDADE\4º semestre 2 parte\atividade de extensao\corretor de redacao\corretor redacao app\src\components\barraNevegacao" />
@@ -156,6 +144,9 @@
       <workItem from="1745975993059" duration="6486000" />
       <workItem from="1746122697809" duration="6338000" />
       <workItem from="1746284757526" duration="7168000" />
+      <workItem from="1746394887031" duration="626000" />
+      <workItem from="1746572760747" duration="5172000" />
+      <workItem from="1747180009046" duration="322000" />
     </task>
     <task id="LOCAL-00001" summary="meu segundo commit">
       <option name="closed" value="true" />
@@ -197,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745689958041</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="desenvolvimento da ultima pagina de visualizar a redacao">
+      <option name="closed" value="true" />
+      <created>1746296995848</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746296995848</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +219,8 @@
     <MESSAGE value="integração com vuetify" />
     <MESSAGE value="integração com vuex" />
     <MESSAGE value="stash do workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="stash do workspace.xml" />
+    <MESSAGE value="desenvolvimento da ultima pagina de visualizar a redacao" />
+    <option name="LAST_COMMIT_MESSAGE" value="desenvolvimento da ultima pagina de visualizar a redacao" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
