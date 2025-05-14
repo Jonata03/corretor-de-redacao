@@ -1,84 +1,3 @@
-<!--
-<template>
-  <v-container>
-    <v-card class="pa-4" @mouseup="handleSelection">
-      <div v-html="highlightedHtml"></div>
-    </v-card>
-  </v-container>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      originalText: `Você pode marcar várias partes deste texto. Mesmo se ele repetir uma frase, você consegue destacar apenas onde quiser.mo se ele repetir uma frase, você consegue destacar apenas onde quiser.`,
-      highlights: [], // Array de { start: Number, end: Number }
-    };
-  },
-  computed: {
-    highlightedHtml() {
-      let result = '';
-      let lastIndex = 0;
-
-      // Ordena os trechos por início para evitar sobreposição fora de ordem
-      const sortedHighlights = [...this.highlights].sort((a, b) => a.start - b.start);
-
-      sortedHighlights.forEach(({ start, end }) => {
-        // Adiciona o texto antes do destaque
-        result += this.escapeHTML(this.originalText.slice(lastIndex, start));
-        // Adiciona o trecho destacado
-        result += `<span style="background-color: yellow;">${this.escapeHTML(this.originalText.slice(start, end))}</span>`;
-        lastIndex = end;
-      });
-
-      // Adiciona o restante do texto após o último destaque
-      result += this.escapeHTML(this.originalText.slice(lastIndex));
-
-      return result;
-    },
-  },
-  methods: {
-    handleSelection() {
-      const selection = window.getSelection();
-      if (!selection.rangeCount) return;
-
-      const range = selection.getRangeAt(0);
-      const selectedText = selection.toString().trim();
-      if (!selectedText) return;
-
-      const container = range.commonAncestorContainer;
-      if (!this.isPartOfText(container)) return;
-
-      // Calcula o offset dentro do texto completo
-      const preSelectionRange = range.cloneRange();
-      preSelectionRange.selectNodeContents(this.$el.querySelector('div'));
-      preSelectionRange.setEnd(range.startContainer, range.startOffset);
-      const start = preSelectionRange.toString().length;
-      const end = start + selectedText.length;
-
-      // Evita duplicatas (por posição)
-      if (!this.highlights.some(h => h.start === start && h.end === end)) {
-        this.highlights.push({ start, end });
-      }
-
-      // Limpa a seleção para melhor UX
-      selection.removeAllRanges();
-    },
-    isPartOfText(node) {
-      return node.nodeType === Node.TEXT_NODE || (node.childNodes && [...node.childNodes].some(n => n.nodeType === Node.TEXT_NODE));
-    },
-    escapeHTML(str) {
-      return str
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;');
-    },
-  },
-};
-</script>
--->
-
-
 <template>
   <barra-navegar-reescrever/>
   <v-container>
@@ -107,20 +26,27 @@ export default {
     </div>
     <v-card class="ma-2 d-flex justify-center  align-center flex-column">
       <v-container class="card pa-1">
-        <button class="pa-1 mr-2 ">
+        <button class="pa-1 mr-2 botoes">
           <v-icon color="yellow">mdi-star</v-icon>
           <span class="text-uppercase">  comentar</span>
         </button>
-        <button>
+        <button @click="aplicarMarcador" class="pa-1 mr-2 botoes">
           <v-icon color="blue">mdi-marker</v-icon>
           <span class="text-uppercase"> demarcar</span>
         </button>
+        <button class="pa-1 mr-2 botoes" @click="desfazerUltimoMarcador">
+          <v-icon color="red">mdi-backspace</v-icon>
+          <span class="text-uppercase"> dismarcar</span>
+        </button>
       </v-container>
       <div class="lined-paper">
-      <textarea
-          class="lined-textarea"
-          placeholder="Escreva sua redação aqui..."
-      ></textarea>
+        <div
+            ref="texto"
+            class="lined-textarea"
+            contenteditable="true"
+            @mouseup="handleSelection"
+            style="min-height: 200px; white-space: pre-wrap;"
+        ></div>
       </div>
     </v-card>
   </v-container>
@@ -166,7 +92,9 @@ export default {
           totalObtido: 200,
           totalMaximo: 200
         }
-      ]
+      ],
+      selectedRange: null,
+      marcadores: []
     };
   },
   mounted() {
@@ -176,15 +104,53 @@ export default {
     compartilhar() {
       console.log('Compartilhar a redação corrigida');
     },
-  },
-};
+    handleSelection() {
+      const selection = window.getSelection();
+      if (selection.rangeCount === 0) return;
+
+      const range = selection.getRangeAt(0);
+
+      if (this.$refs.texto.contains(range.commonAncestorContainer)) {
+        this.selectedRange = range;
+      } else {
+        this.selectedRange = null;
+      }
+    },
+    aplicarMarcador() {
+      if (!this.selectedRange || this.selectedRange.collapsed) return;
+
+      const span = document.createElement('span');
+      span.style.backgroundColor = 'yellow';
+      span.appendChild(this.selectedRange.extractContents());
+      this.selectedRange.insertNode(span);
+
+      this.marcadores.push(span); // <-- guarda o marcador
+
+      this.selectedRange = null;
+      window.getSelection().removeAllRanges();
+    },
+    desfazerUltimoMarcador() {
+      const ultimo = this.marcadores.pop();
+      if (!ultimo) return;
+
+      const textoPuro = document.createTextNode(ultimo.textContent);
+      ultimo.replaceWith(textoPuro);
+    }
+  }
+}
 </script>
 <style scoped>
+.botoes:hover {
+  background-color: #e0e0e0;
+  transition: 1s;
+}
+
 .pontuacao {
   font-size: 2em;
   font-weight: bold;
   color: #4CAF50;
 }
+
 .lined-paper {
   position: relative;
   width: 100%;
