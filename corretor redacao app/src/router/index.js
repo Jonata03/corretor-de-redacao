@@ -5,7 +5,7 @@ import CorrecaoRedacao from "@/pages/CorrecaoRedacao.vue";
 
 const routes = [
     { path: '/', component: PaginaInicial },
-    { path: '/tela2', component: tela2 },
+    { path: '/correcao-redacao', component: CorrecaoRedacao },
 ]
 
 const router = createRouter({
