@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import tela2 from '@/components/tela2.vue'
-import PaginaInicial from "@/pages/PaginaInicial.vue";
-import CorrecaoRedacao from "@/pages/CorrecaoRedacao.vue";
+import PaginaInicial from '@/pages/PaginaInicial.vue'
+import CorrecaoRedacao from '@/pages/CorrecaoRedacao.vue'
 
 const routes = [
     { path: '/', component: PaginaInicial },
