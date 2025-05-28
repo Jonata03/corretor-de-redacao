@@ -5,10 +5,15 @@
         <button @click="retornar">
           <v-icon color="grey">mdi-chevron-left</v-icon>
         </button>
-        <button class="pa-1 mr-2 bg-orange rounded-50% textoBotao">
-          <v-icon color="black">mdi-pen</v-icon>
-          <span class="text-uppercase">  reescrever</span>
-        </button>
+        <div>
+          <button class="pa-1 mr-2 bg-orange rounded-50% textoBotao">
+            <v-icon color="black">mdi-pen</v-icon>
+            <span class="text-uppercase">  reescrever</span>
+          </button>
+          <v-btn @click="voltarParaTelaInicial" to="/">
+            <v-icon>mdi-home</v-icon>
+          </v-btn>
+        </div>
       </v-container>
     </v-app-bar>
   </v-layout>
@@ -19,6 +24,9 @@ export default {
   methods: {
     retornar() {
       this.$emit('retornar');
+    },
+    voltarParaTelaInicial(){
+      this.$emit('retonarParaPaginaInicial')
     }
   }
 };

@@ -1,55 +1,57 @@
 <template>
-  <barra-navegar-reescrever/>
-  <v-container>
-    <v-card class="ma-2 d-flex justify-center  align-center flex-column">
-      <v-card-title>
-        <h6>Nota Redação</h6>
-      </v-card-title>
-      <v-card-text class="pa-0">
-        <h3><span class="pontuacao">1000</span>/1000</h3>
-      </v-card-text>
-      <v-card-actions>
-        <botao-compartilhar @compartilhar="compartilhar"/>
-      </v-card-actions>
-    </v-card>
-    <div class="d-flex flex-row flex-wrap justify-start">
-      <competencia
-          v-for="competencia in competencias"
-          :key="competencia.titulo"
-          :titulo="competencia.titulo"
-          :corTitulo="competencia.corTitulo"
-          :totalObtido="competencia.totalObtido"
-          :totalMaximo="competencia.totalMaximo"
-          class="ma-2"
-          style="flex: 1 1 250px; max-width: 100%;"
-      />
-    </div>
-    <v-card class="ma-2 d-flex justify-center  align-center flex-column">
-      <v-container class="card pa-1">
-        <button class="pa-1 mr-2 botoes">
-          <v-icon color="yellow">mdi-star</v-icon>
-          <span class="text-uppercase">  comentar</span>
-        </button>
-        <button @click="aplicarMarcador" class="pa-1 mr-2 botoes">
-          <v-icon color="blue">mdi-marker</v-icon>
-          <span class="text-uppercase"> demarcar</span>
-        </button>
-        <button class="pa-1 mr-2 botoes" @click="desfazerUltimoMarcador">
-          <v-icon color="red">mdi-backspace</v-icon>
-          <span class="text-uppercase"> dismarcar</span>
-        </button>
-      </v-container>
-      <div class="lined-paper">
-        <div
-            ref="texto"
-            class="lined-textarea"
-            contenteditable="true"
-            @mouseup="handleSelection"
-            style="min-height: 200px; white-space: pre-wrap;"
-        ></div>
+  <div>
+    <barra-navegar-reescrever @retonarParaPaginaInicial="voltarParaTelaInicial"/>
+    <v-container>
+      <v-card class="ma-2 d-flex justify-center  align-center flex-column">
+        <v-card-title>
+          <h6>Nota Redação</h6>
+        </v-card-title>
+        <v-card-text class="pa-0">
+          <h3><span class="pontuacao">1000</span>/1000</h3>
+        </v-card-text>
+        <v-card-actions>
+          <botao-compartilhar @compartilhar="compartilhar"/>
+        </v-card-actions>
+      </v-card>
+      <div class="d-flex flex-row flex-wrap justify-start">
+        <competencia
+            v-for="competencia in competencias"
+            :key="competencia.titulo"
+            :titulo="competencia.titulo"
+            :corTitulo="competencia.corTitulo"
+            :totalObtido="competencia.totalObtido"
+            :totalMaximo="competencia.totalMaximo"
+            class="ma-2"
+            style="flex: 1 1 250px; max-width: 100%;"
+        />
       </div>
-    </v-card>
-  </v-container>
+      <v-card class="ma-2 d-flex justify-center  align-center flex-column">
+        <v-container class="card pa-1">
+          <button class="pa-1 mr-2 botoes">
+            <v-icon color="yellow">mdi-star</v-icon>
+            <span class="text-uppercase">  comentar</span>
+          </button>
+          <button @click="aplicarMarcador" class="pa-1 mr-2 botoes">
+            <v-icon color="blue">mdi-marker</v-icon>
+            <span class="text-uppercase"> demarcar</span>
+          </button>
+          <button class="pa-1 mr-2 botoes" @click="desfazerUltimoMarcador">
+            <v-icon color="red">mdi-backspace</v-icon>
+            <span class="text-uppercase"> dismarcar</span>
+          </button>
+        </v-container>
+        <div class="lined-paper">
+          <div
+              ref="texto"
+              class="lined-textarea"
+              contenteditable="true"
+              @mouseup="handleSelection"
+              style="min-height: 200px; white-space: pre-wrap;"
+          ></div>
+        </div>
+      </v-card>
+    </v-container>
+  </div>
 </template>
 <script>
 import BarraNavegarReescrever from '@/components/barraNevegacao/BarraNavegarReescrever.vue'
@@ -101,6 +103,9 @@ export default {
     this.$refs.modalAlert.show();
   },
   methods: {
+    async voltarParaTelaInicial() {
+      // await this.$router.push('/');
+    },
     compartilhar() {
       console.log('Compartilhar a redação corrigida');
     },
