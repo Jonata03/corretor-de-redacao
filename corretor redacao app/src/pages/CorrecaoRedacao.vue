@@ -1,6 +1,10 @@
 <template>
   <div>
-    <barra-navegar-reescrever @retonarParaPaginaInicial="voltarParaTelaInicial"/>
+    <barra-navegar-reescrever @retonarParaPaginaInicial="voltarParaTelaInicial"
+                              @acaoBotaoPrincipal="reescreverRedacao"
+                              @retornar = "acaoBotaoRetornar"
+                              numero-pagina="3"
+                              titulo-botao-principal="Reescrever"/>
     <v-container>
       <v-card class="ma-2 d-flex justify-center  align-center flex-column">
         <v-card-title>
@@ -33,11 +37,11 @@
           </button>
           <button @click="aplicarMarcador" class="pa-1 mr-2 botoes">
             <v-icon color="blue">mdi-marker</v-icon>
-            <span class="text-uppercase"> demarcar</span>
+            <span class="text-uppercase"> destacar</span>
           </button>
           <button class="pa-1 mr-2 botoes" @click="desfazerUltimoMarcador">
             <v-icon color="red">mdi-backspace</v-icon>
-            <span class="text-uppercase"> dismarcar</span>
+            <span class="text-uppercase"> desmarcar</span>
           </button>
         </v-container>
         <div class="lined-paper">
@@ -99,12 +103,15 @@ export default {
       marcadores: []
     };
   },
-  mounted() {
-    this.$refs.modalAlert.show();
-  },
   methods: {
+    async reescreverRedacao(){
+      await this.$router.push('/escrever');
+    },
     async voltarParaTelaInicial() {
-      // await this.$router.push('/');
+      await this.$router.push('/');
+    },
+    acaoBotaoRetornar(){
+      this.$router.go(-1);
     },
     compartilhar() {
       console.log('Compartilhar a redação corrigida');
@@ -159,7 +166,7 @@ export default {
 .lined-paper {
   position: relative;
   width: 100%;
-  height: 550px;
+  height: 750px;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
@@ -176,8 +183,8 @@ export default {
   background-image: repeating-linear-gradient(
       to bottom,
       transparent,
-      transparent 22px,
-      #ccc 24px
+      transparent 28px,
+      #ccc 30px
   );
   pointer-events: none;
   z-index: 0;

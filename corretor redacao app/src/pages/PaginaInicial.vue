@@ -10,7 +10,7 @@
             color="white"
             rounded="xl"
             variant="plain"
-            to="/correcao-redacao">
+            to="/escrever">
           ESCREVER REDAÇÃO
         </v-btn>
       </div>
