@@ -8,11 +8,11 @@
         <!-- Etapas no topo -->
         <div class="d-flex align-center justify-space-between">
           <div class="step-wrapper">
-            <v-chip :color="corVChipPaginacao('1')" class="mr-2">1</v-chip>
+            <v-chip :color="corVChipPaginacao('1')" class="">1</v-chip>
             <span :class="corSpanPaginacao('1')">Escolha um tema</span>
-            <v-chip :color="corVChipPaginacao('2')" class="mr-2 ml-6">2</v-chip>
+            <v-chip :color="corVChipPaginacao('2')" class="ml-4">2</v-chip>
             <span :class="corSpanPaginacao('2')">Escreva sua redação</span>
-            <v-chip :color="corVChipPaginacao('3')" class="mr-2 ml-6">3</v-chip>
+            <v-chip :color="corVChipPaginacao('3')" class="ml-4">3</v-chip>
             <span :class="corSpanPaginacao('3')">Receba sua correção</span>
           </div>
         </div>
@@ -68,6 +68,13 @@ export default {
 };
 </script>
 <style scoped>
+.step-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .textoBotao {
   font-size: 0.7em;
   border-radius: 50px;

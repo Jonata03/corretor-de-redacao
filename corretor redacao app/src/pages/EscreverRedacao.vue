@@ -36,13 +36,6 @@ export default {
 }
 </script>
 <style scoped>
-.step-wrapper {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
 .lined-paper {
   position: relative;
   width: 100%;
