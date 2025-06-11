@@ -123,8 +123,7 @@ export default {
   font-size: 30px;
   font-weight: bold;
   color: #E65100;
-  padding: 16px;
-  padding-left: 0px;
+  padding: 16px 16px 16px 0;
 }
 
 .botao-escrever {
