@@ -14,6 +14,7 @@
 
       <div class="lined-paper">
         <textarea
+            v-model = "redacao"
             class="lined-textarea"
             placeholder="Escreva sua redação aqui..."
         ></textarea>
@@ -23,14 +24,22 @@
 </template>
 <script>
 import BarraNavegarReescrever from '@/components/barraNevegacao/BarraNavegarReescrever.vue'
+import {corrigirRedacao} from "@/services/integracaoChatGpt.js";
 export default {
   components: {BarraNavegarReescrever},
+  data() {
+    return {
+      redacao: ''
+    }
+  },
   methods: {
-    corrigirRedacao(){
-      this.$router.push('/correcao-redacao')
+    async corrigirRedacao(){
+      const resposta = await corrigirRedacao(this.redacao)
+      const jsonResposta = await JSON.parse(resposta)
+      console.log(jsonResposta)
     },
     retornar(){
-      this.$router.go(-1);
+      this.$router.go(-1)
     }
   }
 }
