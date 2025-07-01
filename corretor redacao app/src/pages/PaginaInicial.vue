@@ -10,7 +10,7 @@
             color="white"
             rounded="xl"
             variant="plain"
-            to="/escrever">
+            to="/escolher-tema">
           ESCREVER REDAÇÃO
         </v-btn>
       </div>

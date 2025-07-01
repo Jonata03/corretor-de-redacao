@@ -166,7 +166,7 @@ export default {
 .lined-paper {
   position: relative;
   width: 100%;
-  height: 750px;
+  height: 720px;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
@@ -182,9 +182,9 @@ export default {
   height: 100%;
   background-image: repeating-linear-gradient(
       to bottom,
-      transparent,
-      transparent 28px,
-      #ccc 30px
+      white,
+      white 22px,
+      #ccc 24px
   );
   pointer-events: none;
   z-index: 0;

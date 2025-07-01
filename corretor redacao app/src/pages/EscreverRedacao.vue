@@ -9,7 +9,7 @@
           label="Título (Opcional)"
           variant="outlined"
           hide-details
-          class="mb-4"
+          class="mb-4 bg-white"
       ></v-text-field>
 
       <div class="lined-paper">
@@ -39,7 +39,7 @@ export default {
 .lined-paper {
   position: relative;
   width: 100%;
-  height: 750px;
+  height: 720px;
   border: 1px solid #ccc;
   border-radius: 8px;
   overflow: hidden;
@@ -55,9 +55,9 @@ export default {
   height: 100%;
   background-image: repeating-linear-gradient(
       to bottom,
-      transparent,
-      transparent 28px,
-      #ccc 30px
+      white,
+      white 22px,
+      #ccc 24px
   );
   pointer-events: none;
   z-index: 0;
@@ -72,7 +72,7 @@ export default {
   background: transparent;
   font-size: 16px;
   line-height: 24px;
-  padding: 0 16px;
+  padding: 0 8px;
   outline: none;
   z-index: 1;
 }
