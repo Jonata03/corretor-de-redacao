@@ -1,11 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import tela2 from '@/components/tela2.vue'
 import PaginaInicial from '@/pages/PaginaInicial.vue'
 import CorrecaoRedacao from '@/pages/CorrecaoRedacao.vue'
+import EscreverRedacao from '@/pages/EscreverRedacao.vue'
+import TemasRedacao from "@/pages/TemasRedacao.vue";
 
 const routes = [
     { path: '/', component: PaginaInicial },
     { path: '/correcao-redacao', component: CorrecaoRedacao },
+    { path: '/escrever/:id', component: EscreverRedacao},
+    { path: '/escolher-tema', component: TemasRedacao}
 ]
 
 const router = createRouter({
