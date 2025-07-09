@@ -4,9 +4,9 @@ const store = createStore({
     state: {
         myState: 'valorInicial',
         temasRedacao: [
-            /*{
+            {
                 titulo: 'Tema Livre',
-                imagem: '',
+                imagem: './src/assets/images/temas/tema-livre.png',
                 textosMotivadores: [
                     {
                         titulo: 'Tema Livre',
@@ -15,14 +15,14 @@ const store = createStore({
                         fonte: ''
                     },
                 ]
-            },*/
+            },
             {
-                titulo: 'Desafios para a valorização da herança africana no Brasil',
-                imagem: './src/assets/images/img-tema-1.jpg',
+                titulo: 'Desafios para a valorização da herança africana no Brasil Desafios para a valorização da herança africana no Brasil',
+                imagem: './src/assets/images/temas/img-tema-1.jpg',
                 textosMotivadores: [
                     {
                         titulo: '',
-                        imagem:'./src/assets/images/img-tema-1.jpg',
+                        imagem:'./src/assets/images/temas/img-tema-1.jpg',
                         texto: ' Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
                         fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
                     },
@@ -71,11 +71,11 @@ const store = createStore({
             },
             {
                 titulo: 'Desafios para a valorização da herança africana no Brasil',
-                imagem: './src/assets/images/img-tema-1.jpg',
+                imagem: './src/assets/images/temas/img-tema-1.jpg',
                 textosMotivadores: [
                     {
                         titulo: '',
-                        imagem:'./src/assets/images/img-tema-1.jpg',
+                        imagem:'./src/assets/images/temas/img-tema-1.jpg',
                         texto: ' Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
                         fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
                     },
@@ -124,11 +124,11 @@ const store = createStore({
             },
             {
                 titulo: 'Desafios para a valorização da herança africana no Brasil',
-                imagem: './src/assets/images/img-tema-1.jpg',
+                imagem: './src/assets/images/temas/img-tema-1.jpg',
                 textosMotivadores: [
                     {
                         titulo: '',
-                        imagem:'./src/assets/images/img-tema-1.jpg',
+                        imagem:'./src/assets/images/temas/img-tema-1.jpg',
                         texto: ' Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
                         fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
                     },
@@ -177,11 +177,11 @@ const store = createStore({
             },
             {
                 titulo: 'Desafios para a valorização da herança africana no Brasil',
-                imagem: './src/assets/images/img-tema-1.jpg',
+                imagem: './src/assets/images/temas/img-tema-1.jpg',
                 textosMotivadores: [
                     {
                         titulo: '',
-                        imagem:'./src/assets/images/img-tema-1.jpg',
+                        imagem:'./src/assets/images/temas/img-tema-1.jpg',
                         texto: ' Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
                         fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
                     },

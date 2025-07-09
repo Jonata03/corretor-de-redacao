@@ -5,13 +5,17 @@
                             numero-pagina="2"
                             titulo-botao-principal="Corrigir"/>
     <v-container class="pa-6">
+      <div class="container-tema">
+        <TextosMotivadores :tema="getTema()"/>
+        <h1 class="text-h4">Tema: {{ getTema().titulo }}</h1>
+        <div class="container-icon"><v-btn icon="mdi mdi-tooltip-text" v-tooltip="'Ver textos motivadores'"/></div>
+      </div>
       <v-text-field
           label="Título (Opcional)"
           variant="outlined"
           hide-details
-          class="mb-4 bg-white"
-      ></v-text-field>
-
+          class="mb-4 bg-white titulo-text-field"
+      />
       <div class="lined-paper">
         <textarea
             class="lined-textarea"
@@ -23,9 +27,23 @@
 </template>
 <script>
 import BarraNavegarReescrever from '@/components/barraNevegacao/BarraNavegarReescrever.vue'
+import TextosMotivadores from "@/components/modal/TextosMotivadores.vue";
+import {mapState} from "vuex";
 export default {
-  components: {BarraNavegarReescrever},
+  components: {
+    BarraNavegarReescrever,
+    TextosMotivadores
+  },
+  computed: {
+    ...mapState({
+      temas: state => state.temasRedacao
+    })
+  },
   methods: {
+    getTema(){
+      console.log(this.temas[this.$route.params.id])
+      return this.temas[this.$route.params.id]
+    },
     corrigirRedacao(){
       this.$router.push('/correcao-redacao')
     },
@@ -36,14 +54,36 @@ export default {
 }
 </script>
 <style scoped>
+.container-tema {
+  display: flex;
+  padding: 20px 0 20px 20px;
+  margin: 20px 0;
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container-tema h1 {
+  width: 90%;
+}
+
+.container-icon {
+  align-content: center;
+  width: 10%;
+}
+
+.titulo-text-field ::v-deep(input){
+  font-size: 20px;
+}
 .lined-paper {
   position: relative;
   width: 100%;
-  height: 720px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  height: 900px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
   overflow: hidden;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .lined-paper::before {
@@ -56,8 +96,8 @@ export default {
   background-image: repeating-linear-gradient(
       to bottom,
       white,
-      white 22px,
-      #ccc 24px
+      white 28px,
+      #aaa 30px
   );
   pointer-events: none;
   z-index: 0;
@@ -71,9 +111,10 @@ export default {
   resize: none;
   background: transparent;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 30px;
   padding: 0 8px;
   outline: none;
   z-index: 1;
+  overflow: hidden;
 }
 </style>

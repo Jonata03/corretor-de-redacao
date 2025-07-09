@@ -26,10 +26,11 @@
                     <v-card-title class="text-h5 text-center font-weight-bold">
                       Texto {{ (idx + 1) }}: {{ texto.titulo }}
                     </v-card-title>
-                    <v-card-text class="d-flex justify-center text-justify text-body-2 primeira-linha py-2">
+                    <v-card-text v-if="tema.textosMotivadores[idx].texto !== ''"
+                                 class="d-flex justify-center text-justify text-body-2 py-0">
                       {{ texto.texto }}
                     </v-card-text>
-                    <v-img :v-if="tema.textosMotivadores[idx].imagem != null"
+                    <v-img :v-if="tema.textosMotivadores[idx].imagem !== ''"
                            :src="tema.textosMotivadores[idx].imagem"
                            class="py-3"/>
                     <p class="text-center text-caption legenda"> {{ texto.fonte }} </p>
@@ -297,8 +298,9 @@ export default {
 <style scoped>
 .container-laranja {
   background-color: #FFAB40;
-  height: 100px;
+  padding: 15px;
   align-content: center;
+  line-height: 0.1;
 }
 .secao-textos-motivadores {
   padding: 2% 5%;
