@@ -8,7 +8,9 @@
       <div class="container-tema">
         <TextosMotivadores :tema="getTema()"/>
         <h1 class="text-h4">Tema: {{ getTema().titulo }}</h1>
-        <div class="container-icon"><v-btn icon="mdi mdi-tooltip-text" v-tooltip="'Ver textos motivadores'"/></div>
+        <div class="container-icon">
+          <v-btn icon="mdi mdi-tooltip-text" v-tooltip:top="'Ver textos motivadores'"/>
+        </div>
       </div>
       <v-text-field
           label="Título (Opcional)"
@@ -41,11 +43,10 @@ export default {
   },
   methods: {
     getTema(){
-      console.log(this.temas[this.$route.params.id])
-      return this.temas[this.$route.params.id]
+      return this.temas[this.$route.params.idTema]
     },
     corrigirRedacao(){
-      this.$router.push('/correcao-redacao')
+      this.$router.push('/correcao-redacao/' + this.$route.params.idTema)
     },
     retornar(){
       this.$router.go(-1);

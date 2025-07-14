@@ -10,19 +10,19 @@ const store = createStore({
                 textosMotivadores: [
                     {
                         titulo: 'Tema Livre',
-                        imagem: '',
-                        texto: 'Sinta-se à vontade para escrever sobre um tema qualquer',
+                        imagem: './src/assets/images/temas/tema-livre.png',
+                        texto: 'Sinta-se à vontade para escrever sobre um tema qualquer.',
                         fonte: ''
                     },
                 ]
             },
             {
-                titulo: 'Desafios para a valorização da herança africana no Brasil Desafios para a valorização da herança africana no Brasil',
+                titulo: 'Desafios para a valorização da herança africana no Brasil',
                 imagem: './src/assets/images/temas/img-tema-1.jpg',
                 textosMotivadores: [
                     {
                         titulo: '',
-                        imagem:'./src/assets/images/temas/img-tema-1.jpg',
+                        imagem: '',
                         texto: ' Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
                         fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
                     },
@@ -31,6 +31,12 @@ const store = createStore({
                         imagem: '',
                         texto: 'As culturas africanas e afro-brasileiras foram relegadas ao campo do folclore com o propósito de confiná-las ao gueto fossilizado da memória. Folclorizar, nesse caso, é reduzir uma cultura a um conjunto de representações estereotipadas, via de regra, alheias ao contexto que produziu essa cultura.',
                         fonte: 'OLIVEIRA, E. D. A epistemologia da ancestralidade. Entrelugares: revista de sociopoética e abordagens afins, 2009.'
+                    },
+                    {
+                        titulo: '',
+                        imagem: './src/assets/images/temas/tema1-texto3.png',
+                        texto: '',
+                        fonte: 'PAULINO, R.Ainda a lamentar. In: GONÇALVES,A. M. Um defeito de cor: romance. Rio de Janeiro: Record, 2024 (adaptado).'
                     },
                     {
                         titulo: ' História afro-brasileira nas escolas: professoras comentam avanços e dificuldades',
@@ -66,6 +72,12 @@ const store = createStore({
                             ' De ouvir as Marias, Mahins, Marielles, malês',
                         fonte: 'Disponível em: www.mangueira.com.br.\n' +
                             'Acesso em: 30 maio 2024 (fragmento).'
+                    },
+                    {
+                        titulo: 'Alunos de escola municipal conhecem pontos do Rio que retratam relação com a África',
+                        imagem: './src/assets/images/temas/tema1-texto6.png',
+                        texto: 'Alunos admiram grafite de Zumbi dos Palmares na Pedra do Sal.',
+                        fonte: 'Disponível em: www.oglobo.com. Acesso em: 29 maio 2024 (adaptado).'
                     },
                 ]
             },
@@ -75,7 +87,7 @@ const store = createStore({
                 textosMotivadores: [
                     {
                         titulo: '',
-                        imagem:'./src/assets/images/temas/img-tema-1.jpg',
+                        imagem: '',
                         texto: ' Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
                         fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
                     },
@@ -84,6 +96,12 @@ const store = createStore({
                         imagem: '',
                         texto: 'As culturas africanas e afro-brasileiras foram relegadas ao campo do folclore com o propósito de confiná-las ao gueto fossilizado da memória. Folclorizar, nesse caso, é reduzir uma cultura a um conjunto de representações estereotipadas, via de regra, alheias ao contexto que produziu essa cultura.',
                         fonte: 'OLIVEIRA, E. D. A epistemologia da ancestralidade. Entrelugares: revista de sociopoética e abordagens afins, 2009.'
+                    },
+                    {
+                        titulo: '',
+                        imagem: './src/assets/images/temas/tema1-texto3.png',
+                        texto: '',
+                        fonte: 'PAULINO, R.Ainda a lamentar. In: GONÇALVES,A. M. Um defeito de cor: romance. Rio de Janeiro: Record, 2024 (adaptado).'
                     },
                     {
                         titulo: ' História afro-brasileira nas escolas: professoras comentam avanços e dificuldades',
@@ -119,6 +137,12 @@ const store = createStore({
                             ' De ouvir as Marias, Mahins, Marielles, malês',
                         fonte: 'Disponível em: www.mangueira.com.br.\n' +
                             'Acesso em: 30 maio 2024 (fragmento).'
+                    },
+                    {
+                        titulo: 'Alunos de escola municipal conhecem pontos do Rio que retratam relação com a África',
+                        imagem: './src/assets/images/temas/tema1-texto6.png',
+                        texto: 'Alunos admiram grafite de Zumbi dos Palmares na Pedra do Sal.',
+                        fonte: 'Disponível em: www.oglobo.com. Acesso em: 29 maio 2024 (adaptado).'
                     },
                 ]
             },
@@ -128,7 +152,7 @@ const store = createStore({
                 textosMotivadores: [
                     {
                         titulo: '',
-                        imagem:'./src/assets/images/temas/img-tema-1.jpg',
+                        imagem: '',
                         texto: ' Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
                         fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
                     },
@@ -137,6 +161,12 @@ const store = createStore({
                         imagem: '',
                         texto: 'As culturas africanas e afro-brasileiras foram relegadas ao campo do folclore com o propósito de confiná-las ao gueto fossilizado da memória. Folclorizar, nesse caso, é reduzir uma cultura a um conjunto de representações estereotipadas, via de regra, alheias ao contexto que produziu essa cultura.',
                         fonte: 'OLIVEIRA, E. D. A epistemologia da ancestralidade. Entrelugares: revista de sociopoética e abordagens afins, 2009.'
+                    },
+                    {
+                        titulo: '',
+                        imagem: './src/assets/images/temas/tema1-texto3.png',
+                        texto: '',
+                        fonte: 'PAULINO, R.Ainda a lamentar. In: GONÇALVES,A. M. Um defeito de cor: romance. Rio de Janeiro: Record, 2024 (adaptado).'
                     },
                     {
                         titulo: ' História afro-brasileira nas escolas: professoras comentam avanços e dificuldades',
@@ -172,6 +202,12 @@ const store = createStore({
                             ' De ouvir as Marias, Mahins, Marielles, malês',
                         fonte: 'Disponível em: www.mangueira.com.br.\n' +
                             'Acesso em: 30 maio 2024 (fragmento).'
+                    },
+                    {
+                        titulo: 'Alunos de escola municipal conhecem pontos do Rio que retratam relação com a África',
+                        imagem: './src/assets/images/temas/tema1-texto6.png',
+                        texto: 'Alunos admiram grafite de Zumbi dos Palmares na Pedra do Sal.',
+                        fonte: 'Disponível em: www.oglobo.com. Acesso em: 29 maio 2024 (adaptado).'
                     },
                 ]
             },
@@ -181,7 +217,7 @@ const store = createStore({
                 textosMotivadores: [
                     {
                         titulo: '',
-                        imagem:'./src/assets/images/temas/img-tema-1.jpg',
+                        imagem: '',
                         texto: ' Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
                         fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
                     },
@@ -190,6 +226,12 @@ const store = createStore({
                         imagem: '',
                         texto: 'As culturas africanas e afro-brasileiras foram relegadas ao campo do folclore com o propósito de confiná-las ao gueto fossilizado da memória. Folclorizar, nesse caso, é reduzir uma cultura a um conjunto de representações estereotipadas, via de regra, alheias ao contexto que produziu essa cultura.',
                         fonte: 'OLIVEIRA, E. D. A epistemologia da ancestralidade. Entrelugares: revista de sociopoética e abordagens afins, 2009.'
+                    },
+                    {
+                        titulo: '',
+                        imagem: './src/assets/images/temas/tema1-texto3.png',
+                        texto: '',
+                        fonte: 'PAULINO, R.Ainda a lamentar. In: GONÇALVES,A. M. Um defeito de cor: romance. Rio de Janeiro: Record, 2024 (adaptado).'
                     },
                     {
                         titulo: ' História afro-brasileira nas escolas: professoras comentam avanços e dificuldades',
@@ -225,6 +267,12 @@ const store = createStore({
                             ' De ouvir as Marias, Mahins, Marielles, malês',
                         fonte: 'Disponível em: www.mangueira.com.br.\n' +
                             'Acesso em: 30 maio 2024 (fragmento).'
+                    },
+                    {
+                        titulo: 'Alunos de escola municipal conhecem pontos do Rio que retratam relação com a África',
+                        imagem: './src/assets/images/temas/tema1-texto6.png',
+                        texto: 'Alunos admiram grafite de Zumbi dos Palmares na Pedra do Sal.',
+                        fonte: 'Disponível em: www.oglobo.com. Acesso em: 29 maio 2024 (adaptado).'
                     },
                 ]
             },

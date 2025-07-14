@@ -9,8 +9,8 @@
         </div>
         <div class="secao-textos-motivadores">
           <div v-for="(texto, idx) in tema.textosMotivadores" :key="idx">
-            <v-divider v-if="idx!==0" class="my-4"></v-divider>
-            <v-card-title class="text-h5 text-center font-weight-bold">
+            <v-divider v-if="idx !== 0" class="my-4"></v-divider>
+            <v-card-title class="text-h5 text-center font-weight-bold text-wrap">
               Texto {{ (idx + 1) }}: {{ texto.titulo }}
             </v-card-title>
             <v-card-text v-if="tema.textosMotivadores[idx].texto !== ''"
@@ -19,23 +19,34 @@
             </v-card-text>
             <v-img :v-if="tema.textosMotivadores[idx].imagem !== ''"
                    :src="tema.textosMotivadores[idx].imagem"
-                   class="py-3"/>
+                   max-width="80%"
+                   class="py-3 ma-auto"/>
             <p class="text-center text-caption legenda"> {{ texto.fonte }} </p>
+          </div>
+          <div v-if="idTema !== 0">
+            <v-divider class="my-4"></v-divider>
+            <v-card-title class="text-h5 text-center font-weight-bold text-wrap">
+              PROPOSTA DE REDAÇÃO
+            </v-card-title>
+            <v-card-text class="d-flex justify-center text-justify text-body-2 py-0">
+              A partir da leitura dos textos motivadores e com base nos conhecimentos construídos ao longo de sua formação, redija um texto dissertativo-argumentativo em modalidade escrita formal da língua portuguesa sobre o tema “{{ tema.titulo }}”, apresentando proposta de intervenção que respeite os direitos humanos. Selecione, organize e relacione, de forma coerente e coesa, argumentos e fatos para defesa de seu ponto de vista.
+            </v-card-text>
           </div>
         </div>
         <div class="container-laranja">
           <v-card-actions class="justify-end">
             <v-btn
                 class="mr-4 bg-white"
-                text="Cancelar"
+                text="Fechar"
                 @click="isActive.value = false"
                 color="orange"
                 variant="tonal"
             ></v-btn>
             <v-btn
+                v-if="idTema != null"
                 class="mr-4 bg-white"
                 text="Escolher Tema"
-                :to="'/escrever/'+index"
+                :to="'/escrever/'+idTema"
                 color="orange"
                 variant="tonal"
             ></v-btn>
@@ -53,7 +64,8 @@ export default {
     tema: {
       type: Object,
       required: true
-    }
+    },
+    idTema: String
   },
 }
 </script>

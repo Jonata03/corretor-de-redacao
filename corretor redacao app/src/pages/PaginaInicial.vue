@@ -62,11 +62,11 @@ export default {
     return {
       rascunhos: [
         {
-          titulo: 'O Uso do Vue para o Desenvolvimento Front-End',
+          titulo: 'Desafios para a valorização da herança africana no Brasil',
           texto: 'asdfasd fdsaa das d daa',
         },
         {
-          titulo: 'Vuetify vs Bootstrap',
+          titulo: 'Desafios para a valorização de comunidades e povos tradicionais no Brasil',
           texto: 'fsadfasf fadsfas asdsa gdfv asaasaa da aswdd',
         },
       ],

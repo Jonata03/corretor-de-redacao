@@ -104,8 +104,8 @@ export default {
     };
   },
   methods: {
-    async reescreverRedacao(){
-      await this.$router.push('/escrever');
+    reescreverRedacao(){
+      this.$router.push('/escrever/' + this.$route.params.idTema);
     },
     async voltarParaTelaInicial() {
       await this.$router.push('/');

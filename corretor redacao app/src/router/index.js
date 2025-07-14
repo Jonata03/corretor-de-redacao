@@ -6,8 +6,8 @@ import TemasRedacao from "@/pages/TemasRedacao.vue";
 
 const routes = [
     { path: '/', component: PaginaInicial },
-    { path: '/correcao-redacao', component: CorrecaoRedacao },
-    { path: '/escrever/:id', component: EscreverRedacao},
+    { path: '/correcao-redacao/:idTema', component: CorrecaoRedacao },
+    { path: '/escrever/:idTema', component: EscreverRedacao},
     { path: '/escolher-tema', component: TemasRedacao}
 ]
 
