@@ -1,9 +1,12 @@
-package br.com.corretor_redacao_api;
+package br.com.corretorredacao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-@SpringBootApplication
+
+@EnableConfigurationProperties
+@SpringBootApplication(scanBasePackages = "br.com.corretorredacao")
 public class CorretorRedacaoApiApplication {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package br.com.corretor_redacao_api;
+package br.com.corretorredacao;
 
 import org.testng.annotations.Test;
 import org.springframework.boot.test.context.SpringBootTest;
