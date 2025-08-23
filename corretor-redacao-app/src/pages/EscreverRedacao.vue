@@ -5,13 +5,19 @@
                             numero-pagina="2"
                             titulo-botao-principal="Corrigir"/>
     <v-container class="pa-6">
+      <div class="container-tema">
+        <TextosMotivadores :tema="getTema()"/>
+        <h1 class="text-h4">Tema: {{ getTema().titulo }}</h1>
+        <div class="container-icon">
+          <v-btn icon="mdi mdi-tooltip-text" v-tooltip:top="'Ver textos motivadores'"/>
+        </div>
+      </div>
       <v-text-field
           label="Título (Opcional)"
           variant="outlined"
           hide-details
-          class="mb-4"
-      ></v-text-field>
-
+          class="mb-4 bg-white titulo-text-field"
+      />
       <div class="lined-paper">
         <textarea
             v-model = "redacao"
@@ -25,18 +31,32 @@
 <script>
 import BarraNavegarReescrever from '@/components/barraNevegacao/BarraNavegarReescrever.vue'
 import {corrigirRedacao} from "@/services/integracaoChatGpt.js";
+import TextosMotivadores from "@/components/modal/TextosMotivadores.vue";
+import {mapState} from "vuex";
 export default {
-  components: {BarraNavegarReescrever},
+  components: {
+    BarraNavegarReescrever,
+    TextosMotivadores
+  },
   data() {
     return {
       redacao: ''
     }
   },
+  computed: {
+    ...mapState({
+      temas: state => state.temasRedacao
+    })
+  },
   methods: {
-    async corrigirRedacao(){
+    getTema(){
+      return this.temas[this.$route.params.idTema]
+    },
+    corrigirRedacao(){
       const resposta = await corrigirRedacao(this.redacao)
       const jsonResposta = await JSON.parse(resposta)
       console.log(jsonResposta)
+      this.$router.push('/correcao-redacao/' + this.$route.params.idTema)
     },
     retornar(){
       this.$router.go(-1)
@@ -45,14 +65,36 @@ export default {
 }
 </script>
 <style scoped>
+.container-tema {
+  display: flex;
+  padding: 20px 0 20px 20px;
+  margin: 20px 0;
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.container-tema h1 {
+  width: 90%;
+}
+
+.container-icon {
+  align-content: center;
+  width: 10%;
+}
+
+.titulo-text-field ::v-deep(input){
+  font-size: 20px;
+}
 .lined-paper {
   position: relative;
   width: 100%;
-  height: 750px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  height: 900px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
   overflow: hidden;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .lined-paper::before {
@@ -64,9 +106,9 @@ export default {
   height: 100%;
   background-image: repeating-linear-gradient(
       to bottom,
-      transparent,
-      transparent 28px,
-      #ccc 30px
+      white,
+      white 28px,
+      #aaa 30px
   );
   pointer-events: none;
   z-index: 0;
@@ -80,9 +122,10 @@ export default {
   resize: none;
   background: transparent;
   font-size: 16px;
-  line-height: 24px;
-  padding: 0 16px;
+  line-height: 30px;
+  padding: 0 8px;
   outline: none;
   z-index: 1;
+  overflow: hidden;
 }
 </style>
