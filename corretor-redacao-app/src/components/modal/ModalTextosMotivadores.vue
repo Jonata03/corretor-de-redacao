@@ -8,17 +8,17 @@
           </v-card-title>
         </div>
         <div class="secao-textos-motivadores">
-          <div v-for="(texto, idx) in tema.textosMotivadores" :key="idx">
+          <div v-for="(texto, idx) in tema.textosInformativos" :key="idx">
             <v-divider v-if="idx !== 0" class="my-4"></v-divider>
             <v-card-title class="text-h5 text-center font-weight-bold text-wrap">
               Texto {{ (idx + 1) }}: {{ texto.titulo }}
             </v-card-title>
-            <v-card-text v-if="tema.textosMotivadores[idx].texto !== ''"
+            <v-card-text v-if="tema.textosInformativos[idx].texto !== ''"
                          class="d-flex justify-center text-justify text-body-2 py-0">
-              {{ texto.texto }}
+              {{ texto.textosInformativos }}
             </v-card-text>
-            <v-img :v-if="tema.textosMotivadores[idx].imagem !== ''"
-                   :src="tema.textosMotivadores[idx].imagem"
+            <v-img :v-if="tema.textosInformativos[idx].imagem !== ''"
+                   :src="tema.textosInformativos[idx].imagem"
                    max-width="80%"
                    class="py-3 ma-auto"/>
             <p class="text-center text-caption legenda"> {{ texto.fonte }} </p>
@@ -38,7 +38,7 @@
             <v-btn
                 class="mr-4 bg-white"
                 text="Fechar"
-                @click="isActive.value = false"
+                @click="fecharModal()"
                 color="orange"
                 variant="tonal"
             ></v-btn>
@@ -60,13 +60,29 @@
 <script>
 export default {
   name: "TextosMotivadores",
+  data() {
+    return {
+
+    }
+  },
   props: {
     tema: {
       type: Object,
       required: true
     },
-    idTema: String
+    idTema: String,
+    abrirModal: {
+      type: Boolean,
+      required: true
+    }
   },
+  mounted() {
+  },
+  methods:{
+    fecharModal(){
+      this.$emit('fecharModal');
+    }
+  }
 }
 </script>
 

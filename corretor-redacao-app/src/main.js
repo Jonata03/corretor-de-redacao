@@ -7,7 +7,7 @@ import { createVuetify } from 'vuetify'
 import 'vuetify/styles'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import router from './router'
-import store from './store'
+import store from './core/store/comum/state.js'
 import '@mdi/font/css/materialdesignicons.css'
 
 const vuetify = createVuetify({

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/redacao/escrita/salvar")
+@RequestMapping("/redacao/escrita/salvar/{redacao}")
 public class SalvarRedacaoController {
     private final SalvarRedacaoUseCase salvarRedacaoUseCase;
 

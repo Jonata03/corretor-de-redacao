@@ -31,12 +31,12 @@
 <script>
 import BarraNavegarReescrever from '@/components/barraNevegacao/BarraNavegarReescrever.vue'
 import {corrigirRedacao} from "@/services/integracaoChatGpt.js";
-import TextosMotivadores from "@/components/modal/TextosMotivadores.vue";
+import ModalTextosMotivadores from "@/components/modal/ModalTextosMotivadores.vue";
 import {mapState} from "vuex";
 export default {
   components: {
     BarraNavegarReescrever,
-    TextosMotivadores
+    TextosMotivadores: ModalTextosMotivadores
   },
   data() {
     return {
@@ -52,7 +52,7 @@ export default {
     getTema(){
       return this.temas[this.$route.params.idTema]
     },
-    corrigirRedacao(){
+    async corrigirRedacao(){
       const resposta = await corrigirRedacao(this.redacao)
       const jsonResposta = await JSON.parse(resposta)
       console.log(jsonResposta)

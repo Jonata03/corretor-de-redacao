@@ -30,8 +30,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/corretor_redacao?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: corretor
       SPRING_DATASOURCE_PASSWORD: corretor
-    ports:
-      - "8080:8080"
+
     networks:
       - app-network
 

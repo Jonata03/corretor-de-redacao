@@ -8,8 +8,6 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>corretor redacao api</name>
-
     <modules>
         <module>corretor-redacao-api-domain</module>
         <module>corretor-redacao-api-application</module>
@@ -20,6 +18,7 @@
     <properties>
         <java.version>21</java.version>
         <spring-boot.version>3.4.4</spring-boot.version>
+        <querydsl.version>5.1.0</querydsl.version>
     </properties>
 
     <dependencyManagement>
@@ -31,17 +30,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- Centraliza as versões do QueryDSL (Jakarta) -->
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>${querydsl.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>

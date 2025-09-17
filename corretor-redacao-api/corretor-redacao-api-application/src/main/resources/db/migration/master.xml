@@ -4,7 +4,8 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
     <changeSet id="001-criar-tabela-redacao-avaliacao" author="jonata.araujo">
-        <sqlFile path="classpath:db/migration/001-criar-tabela-redacao-avaliacao.sql"/>
+        <sqlFile path="classpath:db/migration/001-criar-estrutura-inicial.sql"/>
     </changeSet>
 </databaseChangeLog>

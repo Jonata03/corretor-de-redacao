@@ -37,7 +37,7 @@ public class Redacao implements Serializable {
     private String texto;
 
     @Column(name = "re_status")
-    private String status;
+    private Situacao status;
 
     @Column(name = "re_dthr_cadastro")
     private LocalDateTime dataCadastro;
@@ -46,6 +46,7 @@ public class Redacao implements Serializable {
         PENDENTE,
         EM_AVALIACAO,
         AVALIADA,
-        REVISADA
+        EM_ELABORACAO,
+        FINALIZADA
     }
 }

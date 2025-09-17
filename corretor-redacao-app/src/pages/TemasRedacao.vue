@@ -6,249 +6,87 @@
                             @retornar="retornar"></BarraNavegarReescrever>
     <v-container>
       <div class="d-flex justify-space-around flex-wrap align-center">
-        <v-card v-for="(tema, index) in temas" :key="index"
+        <v-card v-for="(tema, index) in temas" :key="index" @click="selecionarTema(tema)"
                 width="31%" height="280px" class="my-5 elevation-3" rounded="xl">
           <v-img :src="tema.imagem" height="47%" cover></v-img>
-          <v-card-title class="font-weight-medium text-center text-wrap px-4 bg-grey-lighten-5
- h-100">
+          <v-card-title class="font-weight-medium text-center text-wrap px-4 bg-grey-lighten-5h-100">
             {{ tema.titulo }}
           </v-card-title>
-          <TextosMotivadores :tema="temas[index]" :id-tema="index"/>
         </v-card>
       </div>
     </v-container>
+    <TextosMotivadores v-if="abrirModal"
+                       :tema="temaSelecionado"
+                       :id-tema="temaSelecionado.id"
+                       :abrir-modal="abrirModal"
+                       @fecharModal="fecharModal"/>
   </div>
 </template>
 <script>
 import BarraNavegarReescrever from "@/components/barraNevegacao/BarraNavegarReescrever.vue";
-import TextosMotivadores from "@/components/modal/TextosMotivadores.vue";
-import {mapState} from "vuex";
+import ModalTextosMotivadores from "@/components/modal/ModalTextosMotivadores.vue";
+import {mapActions} from "vuex";
+import actionTypes from "@/core/constants/actionTypes.js";
+import axios from "axios";
 
 export default {
   name: "TemasRedacao",
-  components: {BarraNavegarReescrever, TextosMotivadores},
+  components: {BarraNavegarReescrever, TextosMotivadores: ModalTextosMotivadores},
   data() {
     return {
-      cards: [
-        {
-          title: 'Desafios para a valorização da herança africana no Brasil',
-          image: './src/assets/images/img-tema-1.jpg',
-          textosMotivadores: [
-            {
-              titulo: '',
-              texto: ' Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
-              fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
-            },
-            {
-              titulo: '',
-              texto: 'As culturas africanas e afro-brasileiras foram relegadas ao campo do folclore com o propósito de confiná-las ao gueto fossilizado da memória. Folclorizar, nesse caso, é reduzir uma cultura a um conjunto de representações estereotipadas, via de regra, alheias ao contexto que produziu essa cultura.',
-              fonte: 'OLIVEIRA, E. D. A epistemologia da ancestralidade. Entrelugares: revista de sociopoética e abordagens afins, 2009.'
-            },
-            {
-              titulo: ' História afro-brasileira nas escolas: professoras comentam avanços e dificuldades',
-              texto: ' As aulas sobre escravidão eram motivo de vergonha para uma professora quando ela estudava em uma escola municipal na zona sul de São Paulo. “Era o meu pior momento na escola”, lembra a ex-aluna. Naquela época, a história da população negra no Brasil era reduzida ao horror do período escravocrata. Não se falava na escola sobre temas como a história e a cultura afro-brasileira, muito menos sobre as grandes personalidades negras do país, como Luiz Gama e Carolina Maria de Jesus.\n' +
-                  'A pedagoga, que é negra, tem orgulho de oferecer uma experiência diferente da que viveu em sala de aula para seus alunos. Agora os livros infantis levados para a turmas têm protagonistas pretos. Temas como a beleza do cabelo crespo e o combate ao racismo fazem parte do dia a dia da escola.',
-              fonte: 'Disponível em: https://jornal.unesp.br.Acesso em: 3 jun. 2024 (adaptado).'
-            },
-            {
-              titulo: 'Histórias para ninar gente grande',
-              texto: ' Brasil, meu nego\n' +
-                  ' Deixa eu te contar\n' +
-                  ' A história que a história não conta\n' +
-                  ' O avesso do mesmo lugar\n' +
-                  ' Na luta é que a gente se encontra\n' +
-                  ' Brasil, meu dengo\n' +
-                  ' A Mangueira chegou\n' +
-                  ' Com versos que o livro apagou\n' +
-                  ' Desde 1500 tem mais invasão do que descobrimento\n' +
-                  ' Tem sangue retinto pisado\n' +
-                  ' Atrás do herói emoldurado\n' +
-                  ' Mulheres, tamoios, mulatos\n' +
-                  ' Eu quero um país que não está no retrato\n' +
-                  ' Brasil, o teu nome é Dandara\n' +
-                  ' E a tua cara é de cariri\n' +
-                  ' Não veio do céu\n' +
-                  ' Nem das mãos de Isabel\n' +
-                  ' A liberdade é um dragão no mar de Aracati\n' +
-                  ' Salve os caboclos de julho\n' +
-                  ' Quem foi de aço nos anos de chumbo\n' +
-                  ' Brasil, chegou a vez\n' +
-                  ' De ouvir as Marias, Mahins, Marielles, malês',
-              fonte: 'Disponível em: www.mangueira.com.br.\n' +
-                  'Acesso em: 30 maio 2024 (fragmento).'
-            },
-          ]
-        },
-        {
-          title: 'Desafios para a valorização da herança africana no Brasil',
-          image: './src/assets/images/img-tema-1.jpg',
-          textosMotivadores: [
-            {
-              titulo: '',
-              texto: 'Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
-              fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
-            },
-            {
-              titulo: '',
-              texto: 'As culturas africanas e afro-brasileiras foram relegadas ao campo do folclore com o propósito de confiná-las ao gueto fossilizado da memória. Folclorizar, nesse caso, é reduzir uma cultura a um conjunto de representações estereotipadas, via de regra, alheias ao contexto que produziu essa cultura.',
-              fonte: 'OLIVEIRA, E. D. A epistemologia da ancestralidade. Entrelugares: revista de sociopoética e abordagens afins, 2009.'
-            },
-            {
-              titulo: 'História afro-brasileira nas escolas: professoras\n' +
-                  'comentam avanços e dificuldades',
-              texto: 'As aulas sobre escravidão eram motivo de vergonha para uma professora quando ela estudava em uma escola municipal na zona sul de São Paulo. “Era o meu pior momento na escola”, lembra a ex-aluna. Naquela época, a história da população negra no Brasil era reduzida ao horror do período escravocrata. Não se falava na escola sobre temas como a história e a cultura afro-brasileira, muito menos sobre as grandes personalidades negras do país, como Luiz Gama e Carolina Maria de Jesus.\n' +
-                  'A pedagoga, que é negra, tem orgulho de oferecer uma experiência diferente da que viveu em sala de aula para seus alunos. Agora os livros infantis levados para a turmas têm protagonistas pretos. Temas como a beleza do cabelo crespo e o combate ao racismo fazem parte do dia a dia da escola.',
-              fonte: 'Disponível em: https://jornal.unesp.br.Acesso em: 3 jun. 2024 (adaptado).'
-            },
-            {
-              titulo: 'Histórias para ninar gente grande\n' +
-                  'G.R.E.S. Estação Primeira de Mangueira\n' +
-                  '(samba-enredo de 2019)',
-              texto: 'Brasil, meu nego\n' +
-                  'Deixa eu te contar\n' +
-                  'A história que a história não conta\n' +
-                  'O avesso do mesmo lugar\n' +
-                  'Na luta é que a gente se encontra\n' +
-                  'Brasil, meu dengo\n' +
-                  'A Mangueira chegou\n' +
-                  'Com versos que o livro apagou\n' +
-                  'Desde 1500 tem mais invasão do que descobrimento\n' +
-                  'Tem sangue retinto pisado\n' +
-                  'Atrás do herói emoldurado\n' +
-                  'Mulheres, tamoios, mulatos\n' +
-                  'Eu quero um país que não está no retrato\n' +
-                  'Brasil, o teu nome é Dandara\n' +
-                  'E a tua cara é de cariri\n' +
-                  'Não veio do céu\n' +
-                  'Nem das mãos de Isabel\n' +
-                  'A liberdade é um dragão no mar de Aracati\n' +
-                  'Salve os caboclos de julho\n' +
-                  'Quem foi de aço nos anos de chumbo\n' +
-                  'Brasil, chegou a vez\n' +
-                  'De ouvir as Marias, Mahins, Marielles, malês',
-              fonte: 'Disponível em: www.mangueira.com.br.\n' +
-                  'Acesso em: 30 maio 2024 (fragmento).'
-            },
-          ]
-        },
-        {
-          title: 'Desafios para a valorização da herança africana no Brasil',
-          image: './src/assets/images/img-tema-1.jpg',
-          textosMotivadores: [
-            {
-              titulo: '',
-              texto: 'Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
-              fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
-            },
-            {
-              titulo: '',
-              texto: 'As culturas africanas e afro-brasileiras foram relegadas ao campo do folclore com o propósito de confiná-las ao gueto fossilizado da memória. Folclorizar, nesse caso, é reduzir uma cultura a um conjunto de representações estereotipadas, via de regra, alheias ao contexto que produziu essa cultura.',
-              fonte: 'OLIVEIRA, E. D. A epistemologia da ancestralidade. Entrelugares: revista de sociopoética e abordagens afins, 2009.'
-            },
-            {
-              titulo: 'História afro-brasileira nas escolas: professoras\n' +
-                  'comentam avanços e dificuldades',
-              texto: 'As aulas sobre escravidão eram motivo de vergonha para uma professora quando ela estudava em uma escola municipal na zona sul de São Paulo. “Era o meu pior momento na escola”, lembra a ex-aluna. Naquela época, a história da população negra no Brasil era reduzida ao horror do período escravocrata. Não se falava na escola sobre temas como a história e a cultura afro-brasileira, muito menos sobre as grandes personalidades negras do país, como Luiz Gama e Carolina Maria de Jesus.\n' +
-                  'A pedagoga, que é negra, tem orgulho de oferecer uma experiência diferente da que viveu em sala de aula para seus alunos. Agora os livros infantis levados para a turmas têm protagonistas pretos. Temas como a beleza do cabelo crespo e o combate ao racismo fazem parte do dia a dia da escola.',
-              fonte: 'Disponível em: https://jornal.unesp.br.Acesso em: 3 jun. 2024 (adaptado).'
-            },
-            {
-              titulo: 'Histórias para ninar gente grande\n' +
-                  'G.R.E.S. Estação Primeira de Mangueira\n' +
-                  '(samba-enredo de 2019)',
-              texto: 'Brasil, meu nego\n' +
-                  'Deixa eu te contar\n' +
-                  'A história que a história não conta\n' +
-                  'O avesso do mesmo lugar\n' +
-                  'Na luta é que a gente se encontra\n' +
-                  'Brasil, meu dengo\n' +
-                  'A Mangueira chegou\n' +
-                  'Com versos que o livro apagou\n' +
-                  'Desde 1500 tem mais invasão do que descobrimento\n' +
-                  'Tem sangue retinto pisado\n' +
-                  'Atrás do herói emoldurado\n' +
-                  'Mulheres, tamoios, mulatos\n' +
-                  'Eu quero um país que não está no retrato\n' +
-                  'Brasil, o teu nome é Dandara\n' +
-                  'E a tua cara é de cariri\n' +
-                  'Não veio do céu\n' +
-                  'Nem das mãos de Isabel\n' +
-                  'A liberdade é um dragão no mar de Aracati\n' +
-                  'Salve os caboclos de julho\n' +
-                  'Quem foi de aço nos anos de chumbo\n' +
-                  'Brasil, chegou a vez\n' +
-                  'De ouvir as Marias, Mahins, Marielles, malês',
-              fonte: 'Disponível em: www.mangueira.com.br.\n' +
-                  'Acesso em: 30 maio 2024 (fragmento).'
-            },
-          ]
-        },
-        {
-          title: 'Desafios para a valorização da herança africana no Brasil',
-          image: './src/assets/images/img-tema-1.jpg',
-          textosMotivadores: [
-            {
-              titulo: '',
-              texto: 'Herança – o legado de crenças, conhecimentos, técnicas, costumes, tradições, transmitido por um grupo social de geração para geração; cultura.',
-              fonte: 'HOUAISS, A.; VILLAR, M. S. Dicionário Houaiss da língua portuguesa. Rio de Janeiro: Objetiva, 2009 (adaptado).'
-            },
-            {
-              titulo: '',
-              texto: 'As culturas africanas e afro-brasileiras foram relegadas ao campo do folclore com o propósito de confiná-las ao gueto fossilizado da memória. Folclorizar, nesse caso, é reduzir uma cultura a um conjunto de representações estereotipadas, via de regra, alheias ao contexto que produziu essa cultura.',
-              fonte: 'OLIVEIRA, E. D. A epistemologia da ancestralidade. Entrelugares: revista de sociopoética e abordagens afins, 2009.'
-            },
-            {
-              titulo: 'História afro-brasileira nas escolas: professoras\n' +
-                  'comentam avanços e dificuldades',
-              texto: 'As aulas sobre escravidão eram motivo de vergonha para uma professora quando ela estudava em uma escola municipal na zona sul de São Paulo. “Era o meu pior momento na escola”, lembra a ex-aluna. Naquela época, a história da população negra no Brasil era reduzida ao horror do período escravocrata. Não se falava na escola sobre temas como a história e a cultura afro-brasileira, muito menos sobre as grandes personalidades negras do país, como Luiz Gama e Carolina Maria de Jesus.\n' +
-                  'A pedagoga, que é negra, tem orgulho de oferecer uma experiência diferente da que viveu em sala de aula para seus alunos. Agora os livros infantis levados para a turmas têm protagonistas pretos. Temas como a beleza do cabelo crespo e o combate ao racismo fazem parte do dia a dia da escola.',
-              fonte: 'Disponível em: https://jornal.unesp.br.Acesso em: 3 jun. 2024 (adaptado).'
-            },
-            {
-              titulo: 'Histórias para ninar gente grande\n' +
-                  'G.R.E.S. Estação Primeira de Mangueira\n' +
-                  '(samba-enredo de 2019)',
-              texto: 'Brasil, meu nego\n' +
-                  'Deixa eu te contar\n' +
-                  'A história que a história não conta\n' +
-                  'O avesso do mesmo lugar\n' +
-                  'Na luta é que a gente se encontra\n' +
-                  'Brasil, meu dengo\n' +
-                  'A Mangueira chegou\n' +
-                  'Com versos que o livro apagou\n' +
-                  'Desde 1500 tem mais invasão do que descobrimento\n' +
-                  'Tem sangue retinto pisado\n' +
-                  'Atrás do herói emoldurado\n' +
-                  'Mulheres, tamoios, mulatos\n' +
-                  'Eu quero um país que não está no retrato\n' +
-                  'Brasil, o teu nome é Dandara\n' +
-                  'E a tua cara é de cariri\n' +
-                  'Não veio do céu\n' +
-                  'Nem das mãos de Isabel\n' +
-                  'A liberdade é um dragão no mar de Aracati\n' +
-                  'Salve os caboclos de julho\n' +
-                  'Quem foi de aço nos anos de chumbo\n' +
-                  'Brasil, chegou a vez\n' +
-                  'De ouvir as Marias, Mahins, Marielles, malês',
-              fonte: 'Disponível em: www.mangueira.com.br.\n' +
-                  'Acesso em: 30 maio 2024 (fragmento).'
-            },
-          ]
-        },
-      ]
+      temas: [],
+      temaSelecionado: {},
+      abrirModal: false
     };
   },
-  computed: {
-    ...mapState({
-      temas: state => state.temasRedacao
-    })
+  async mounted() {
+    await this.buscarTemasDisponiveis();
   },
   methods: {
+    ...mapActions({
+      buscarTemasRedacao: actionTypes.TEMA.BUSCAR_TEMAS
+    }),
+    async buscarTemasDisponiveis() {
+      const temas = await axios.get('http://localhost/corretor-redacao/api/redacao/temas');
+      this.temas = temas.data.tema;
+      this.inserirImagens(temas.data.tema)
+    },
+    inserirImagens(temas) {
+      const imagensPorId = {
+        1: './src/assets/images/temas/tema-livre.png',
+        2: './src/assets/images/temas/img-tema-1.jpg',
+      };
+      const temasComImagem = temas.map(tema => {
+        return {
+          ...tema,
+          imagem: imagensPorId[tema.id] || './src/assets/images/default.png',
+          textosInformativos: tema.textosInformativos
+              ? tema.textosInformativos.map(texto => ({
+                ...texto,
+                imagem: texto.imagem
+                    ? `./src/assets/images/${texto.imagem}/`
+                    : null
+              }))
+              : []
+        };
+      });
+
+      console.log(temasComImagem)
+
+      this.temas = temasComImagem;
+    },
     escreverRedacao() {
       this.$router.push('/escrever/0')
     },
     retornar() {
       this.$router.push('/');
+    },
+    selecionarTema(tema) {
+      this.temaSelecionado = tema;
+      this.abrirModal = true;
+    },
+    fecharModal() {
+      this.abrirModal = false;
     }
   }
 }
@@ -260,6 +98,7 @@ export default {
   align-content: center;
   line-height: 0.1;
 }
+
 .secao-textos-motivadores {
   padding: 2% 5%;
   white-space: pre-line;

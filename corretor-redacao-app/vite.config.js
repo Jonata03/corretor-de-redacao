@@ -7,7 +7,11 @@ import vuetify from 'vite-plugin-vuetify'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
+    server: {
+        host: true,
+    },
+    base: '/corretor-redacao/',
+    plugins: [
     vue(),
     vueDevTools(),
     vuetify({ autoImport: true }),
