@@ -32,9 +32,10 @@ CREATE TABLE tb_redacao
     re_id            BIGINT AUTO_INCREMENT PRIMARY KEY,
     re_titulo        VARCHAR(255),
     tm_id            BIGINT   NOT NULL,
-    re_texto         TEXT     NOT NULL,
-    re_status        VARCHAR(50),
+    re_texto         TEXT,
+    re_situacao      VARCHAR(50),
     re_dthr_cadastro DATETIME NULL,
+    re_dthr_alteracao DATETIME,
     CONSTRAINT fk_redacao_tema FOREIGN KEY (tm_id) REFERENCES tb_tema (tm_id)
 );
 

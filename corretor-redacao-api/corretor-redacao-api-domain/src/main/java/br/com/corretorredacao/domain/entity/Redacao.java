@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @AttributeOverrides({
         @AttributeOverride(name = "dataCadastro", column = @Column(name = "re_dthr_cadastro")),
+        @AttributeOverride(name = "dataAlteracao", column = @Column(name = "re_dthr_alteracao"))
 })
 
 public class Redacao implements Serializable {
@@ -30,17 +31,21 @@ public class Redacao implements Serializable {
     @Column(name = "re_titulo")
     private String titulo;
 
-    @Column(name = "re_tema")
-    private String tema;
+    @ManyToOne
+    @JoinColumn(name = "tm_id", referencedColumnName = "tm_id")
+    private Tema tema;
 
     @Column(name = "re_texto")
     private String texto;
 
-    @Column(name = "re_status")
-    private Situacao status;
+    @Column(name = "re_situacao")
+    private String situacao;
 
     @Column(name = "re_dthr_cadastro")
     private LocalDateTime dataCadastro;
+
+    @Column(name = "re_dthr_alteracao")
+    private LocalDateTime dataAlteracao;
 
     public enum Situacao {
         PENDENTE,

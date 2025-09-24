@@ -36,4 +36,7 @@ public class Tema implements Serializable {
 
     @ManyToMany(mappedBy = "temas")
     private List<TextosInformativos> textosInformativos;
+
+    @OneToMany(mappedBy = "tema")
+    private List<Redacao> redacoes;
 }
