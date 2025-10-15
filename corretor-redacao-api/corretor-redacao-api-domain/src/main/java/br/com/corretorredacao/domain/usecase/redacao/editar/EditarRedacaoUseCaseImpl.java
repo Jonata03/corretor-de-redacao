@@ -33,7 +33,7 @@ public class EditarRedacaoUseCaseImpl implements EditarRedacaoUseCase {
     }
 
     private Redacao buscarRedacao(EditarRedacaoInputData inputdata) {
-        return redacaoDataProvider.BuscarRedacaoPorId(inputdata.getRedacaoId()).orElseThrow(() -> new RuntimeException("Redação não encontrada."));
+        return redacaoDataProvider.buscarRedacaoPorId(inputdata.getRedacaoId()).orElseThrow(() -> new RuntimeException("Redação não encontrada."));
     }
 
     private Tema buscarTema(EditarRedacaoInputData inputdata) {
@@ -62,6 +62,6 @@ public class EditarRedacaoUseCaseImpl implements EditarRedacaoUseCase {
     }
 
     private void salvarRedacao(Redacao redacao) {
-        redacaoDataProvider.SalvarRedacao(redacao);
+        redacaoDataProvider.salvarRedacao(redacao);
     }
 }

@@ -11,20 +11,20 @@
           <h6>Nota Redação</h6>
         </v-card-title>
         <v-card-text class="pa-0">
-          <h3><span class="pontuacao">1000</span>/1000</h3>
+          <h3><span class="pontuacao">{{ avaliacao.notaFinal }}</span>/1000</h3>
         </v-card-text>
         <v-card-actions>
+          visualizar pontos de melhoria
           <botao-compartilhar @compartilhar="compartilhar"/>
         </v-card-actions>
       </v-card>
       <div class="d-flex flex-row flex-wrap justify-start">
         <competencia
-            v-for="competencia in competencias"
-            :key="competencia.titulo"
-            :titulo="competencia.titulo"
-            :corTitulo="competencia.corTitulo"
-            :totalObtido="competencia.totalObtido"
-            :totalMaximo="competencia.totalMaximo"
+            v-for="(competencia,nada,i) in avaliacao.competencias"
+            :titulo="titulo[i]"
+            :corTitulo="cores[i]"
+            :totalObtido="competencia.nota"
+            :totalMaximo="200"
             class="ma-2"
             style="flex: 1 1 250px; max-width: 100%;"
         />
@@ -62,49 +62,30 @@ import BarraNavegarReescrever from '@/components/barraNevegacao/BarraNavegarRees
 import BotaoCompartilhar from '@/components/BotaoCompartilhar.vue'
 import Competencia from "@/components/cards/Competencia.vue";
 import AreaTexto from "@/components/AreaTexto.vue";
+import axios from "axios";
 
 export default {
   name: 'CorrecaoRedacao',
   components: {Competencia, BarraNavegarReescrever, BotaoCompartilhar, AreaTexto},
   data() {
     return {
-      competencias: [{
-        titulo: 'Competência 1',
-        corTitulo: 'green',
-        totalObtido: 200,
-        totalMaximo: 200
-      },
-        {
-          titulo: 'Competência 2',
-          corTitulo: 'orange',
-          totalObtido: 200,
-          totalMaximo: 200
-        },
-        {
-          titulo: 'Competência 3',
-          corTitulo: 'red',
-          totalObtido: 200,
-          totalMaximo: 200
-        },
-        {
-          titulo: 'Competência 4',
-          corTitulo: 'blue',
-          totalObtido: 200,
-          totalMaximo: 200
-        },
-        {
-          titulo: 'Competência 5',
-          corTitulo: 'purple',
-          totalObtido: 200,
-          totalMaximo: 200
-        }
-      ],
+      avaliacao: {},
       selectedRange: null,
-      marcadores: []
+      marcadores: [],
+      titulo: ['Competencia 1','Competencia 2','Competencia 3','Competencia 4', 'Competencia 5'],
+      cores: ['blue','red','orange','green','purple']
     };
   },
+  async mounted() {
+    await this.buscarUltimaAvaliacao();
+  },
   methods: {
-    reescreverRedacao(){
+    async buscarUltimaAvaliacao() {
+      const resposta = await axios.get(`http://localhost/corretor-redacao/api/redacao/avaliar/buscar/ultima/${this.$route.params.idRedacao}`)
+      this.avaliacao = resposta.data
+      console.log(this.avaliacao)
+    },
+    async reescreverRedacao() {
       this.$router.push('/escrever/' + this.$route.params.idTema);
     },
     async voltarParaTelaInicial() {

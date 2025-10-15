@@ -17,7 +17,8 @@ public class EditarRedacaoController {
 
     @PutMapping
     @Transactional
-    public EditarRedacaoOutputData execute(@PathVariable("redacaoId") Long redacaoId, @RequestBody EditarRedacaoInputData inputData){
+    public EditarRedacaoOutputData execute(@PathVariable("redacaoId") Long redacaoId,
+                                           @RequestBody EditarRedacaoInputData inputData){
         inputData.setRedacaoId(redacaoId);
 
         return editarRedacaoUseCase.execute(inputData);

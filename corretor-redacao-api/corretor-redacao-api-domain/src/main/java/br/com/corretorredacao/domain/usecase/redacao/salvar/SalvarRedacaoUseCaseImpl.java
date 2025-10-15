@@ -27,9 +27,9 @@ public class SalvarRedacaoUseCaseImpl implements SalvarRedacaoUseCase {
 
         Redacao entidadeRedacao = criarEntidadeRedacao(tema);
 
-        salvarRedacao(entidadeRedacao);
+        Redacao redacaoSalva = salvarRedacao(entidadeRedacao);
 
-        return null;
+        return salvarRedacaoOutputDataConverter.to(redacaoSalva);
     }
 
     private static Redacao criarEntidadeRedacao(Tema tema) {
@@ -45,7 +45,7 @@ public class SalvarRedacaoUseCaseImpl implements SalvarRedacaoUseCase {
         return temaDataProvider.buscarTemaPorId(temaId).orElseThrow(() -> new RuntimeException("Tema Não Encontrado"));
     }
 
-    private void salvarRedacao(Redacao redacao) {
-        redacaoDataProvider.SalvarRedacao(redacao);
+    private Redacao salvarRedacao(Redacao redacao) {
+        return redacaoDataProvider.salvarRedacao(redacao);
     }
 }

@@ -31,17 +31,19 @@ import actionTypes from "@/core/constants/actionTypes.js";
 import axios from "axios";
 
 export default {
-  name: "TemasRedacao",
+  name: "TemasRedacaoEdicao",
   components: {BarraNavegarReescrever, TextosMotivadores: ModalTextosMotivadores},
   data() {
     return {
-      redacao: {},
+      redacaoId: null,
       temas: [],
       temaSelecionado: {},
       abrirModal: false
     };
   },
   async mounted() {
+    console.log('renderizou')
+    this.redacaoId = this.$route.params.id
     await this.buscarTemasDisponiveis();
   },
   methods: {
@@ -49,7 +51,6 @@ export default {
       buscarTemasRedacao: actionTypes.TEMA.BUSCAR_TEMAS
     }),
     async buscarTemasDisponiveis() {
-      this.redacao.id = this.$route.params.id
       const temas = await axios.get('http://localhost/corretor-redacao/api/redacao/temas');
       this.temas = temas.data.tema;
       this.inserirImagens(temas.data.tema)
@@ -80,28 +81,21 @@ export default {
       this.$router.push('/');
     },
     escolherTema(tema) {
+      console.log(this.redacaoId)
       this.temaSelecionado = tema;
       this.abrirModal = true;
     },
     fecharModal() {
       this.abrirModal = false;
-    },
+      },
     async selecionarTema() {
-      if (isEmpty(this.$route.params.id)) {
-        this.redacao = await this.salvarRedacao()
-      } else {
-        this.redacao = await axios.put(`http://localhost/corretor-redacao/api/redacao/escrita/editar/${this.redacao.id}`, {
-          temaId: this.temaSelecionado.id
-        });
-      }
-      this.$router.push(`/escrever/${this.redacao.id}`);
+      await this.editarRedacao(this.redacaoId)
+      await this.$router.push(`/escrever/${this.redacaoId}`);
     },
-    async salvarRedacao() {
-
-      const salvar = await axios.post('http://localhost/corretor-redacao/api/redacao/escrita/salvar', {
+    async editarRedacao(redacao) {
+      this.redacao = await axios.put(`http://localhost/corretor-redacao/api/redacao/escrita/editar/${redacao}`, {
         temaId: this.temaSelecionado.id
       });
-      return salvar.data
     }
   }
 }

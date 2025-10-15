@@ -1,6 +1,7 @@
 package br.com.corretorredacao.redacao;
 
 import br.com.corretorredacao.domain.usecase.redacao.salvar.SalvarRedacaoInputData;
+import br.com.corretorredacao.domain.usecase.redacao.salvar.SalvarRedacaoOutputData;
 import br.com.corretorredacao.domain.usecase.redacao.salvar.SalvarRedacaoUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,8 +17,7 @@ public class SalvarRedacaoController {
 
     @PostMapping
     @Transactional
-    public void execute(@RequestBody SalvarRedacaoInputData inputData){
-
-        salvarRedacaoUseCase.execute(inputData);
+    public SalvarRedacaoOutputData execute(@RequestBody SalvarRedacaoInputData inputData){
+        return salvarRedacaoUseCase.execute(inputData);
     }
 }

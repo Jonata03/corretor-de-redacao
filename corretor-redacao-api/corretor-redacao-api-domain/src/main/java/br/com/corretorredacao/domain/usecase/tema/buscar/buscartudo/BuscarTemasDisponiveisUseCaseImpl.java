@@ -28,6 +28,7 @@ public class BuscarTemasDisponiveisUseCaseImpl implements BuscarTemasDisponiveis
             List<TextosInformativos> textos = textosInformativosDataProvider.buscarTextosInformativosPorTemaId(tema.getId());
             textosPorTema.put(tema.getId(), textos);
         }
+
         return converter.to(temas, textosPorTema);
     }
 }

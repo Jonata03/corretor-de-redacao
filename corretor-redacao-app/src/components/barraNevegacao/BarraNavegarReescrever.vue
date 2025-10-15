@@ -17,7 +17,9 @@
           </div>
         </div>
         <div>
-          <button class="pa-1 mr-2 bg-orange rounded-50% textoBotao" @click="acaoBotaoPrincipal">
+          <button class="pa-1 mr-2 bg-orange rounded-50% textoBotao"
+                  @click="acaoBotaoPrincipal"
+                  v-if="comBotaoPrincipal">
             <v-icon color="black">mdi-pen</v-icon>
             <span class="text-uppercase">{{ tituloBotaoPrincipal }}</span>
           </button>
@@ -40,26 +42,30 @@ export default {
     numeroPagina: {
       type: String,
       required: true
+    },
+    comBotaoPrincipal: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
     retornar() {
       this.$emit('retornar');
     },
-    voltarParaTelaInicial(){
+    voltarParaTelaInicial() {
       this.$emit('retonarParaPaginaInicial')
     },
-    acaoBotaoPrincipal(){
+    acaoBotaoPrincipal() {
       this.$emit('acaoBotaoPrincipal')
     },
-    corVChipPaginacao(numero){
-      if(numero === this.numeroPagina){
+    corVChipPaginacao(numero) {
+      if (numero === this.numeroPagina) {
         return "deep-orange";
       }
       return "grey-lighten-1";
     },
-    corSpanPaginacao(numero){
-      if(numero === this.numeroPagina){
+    corSpanPaginacao(numero) {
+      if (numero === this.numeroPagina) {
         return "text-orange-darken-4";
       }
       return "text-grey";

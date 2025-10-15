@@ -46,7 +46,7 @@
                 v-if="idTema != null"
                 class="mr-4 bg-white"
                 text="Escolher Tema"
-                :to="'/escrever/'+idTema"
+                @click="selecionarTema"
                 color="orange"
                 variant="tonal"
             ></v-btn>
@@ -81,6 +81,9 @@ export default {
   methods:{
     fecharModal(){
       this.$emit('fecharModal');
+    },
+    selecionarTema(){
+      this.$emit('selecionarTema', this.tema);
     }
   }
 }

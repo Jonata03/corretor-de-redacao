@@ -6,8 +6,8 @@ import br.com.corretorredacao.gateway.dataprovider.repository.RedacaoRepository;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -16,15 +16,18 @@ public class RedacaoDataProviderImpl implements RedacaoDataProvider {
 
     private final RedacaoRepository redacaoRepository;
 
-    private final EntityManager entityManager;
-
     @Override
-    public Redacao SalvarRedacao(Redacao redacao) {
+    public Redacao salvarRedacao(Redacao redacao) {
         return redacaoRepository.save(redacao);
     }
 
     @Override
-    public Optional<Redacao> BuscarRedacaoPorId(Long id) {
-        return redacaoRepository.findById( id);
+    public Optional<Redacao> buscarRedacaoPorId(Long id) {
+        return redacaoRepository.findById(id);
+    }
+
+    @Override
+    public List<Redacao> buscarTodasRedacoes() {
+        return redacaoRepository.findAll();
     }
 }
