@@ -29,6 +29,7 @@ import ModalTextosMotivadores from "@/components/modal/ModalTextosMotivadores.vu
 import {mapActions} from "vuex";
 import actionTypes from "@/core/constants/actionTypes.js";
 import axios from "axios";
+import {isEmpty} from "vuetify/lib/util/index.js";
 
 export default {
   name: "TemasRedacao",
