@@ -1,6 +1,5 @@
 package br.com.corretorredacao.domain.usecase.redacao.buscar;
 
-import br.com.corretorredacao.domain.entity.Redacao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,5 +12,16 @@ import java.util.List;
 @Builder
 @Data
 public class BuscarRedacaoOutputData {
-    List<Redacao> redacoes;
+    List<BuscarRedacaoOutputData.Redacao> redacoes;
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Data
+    @Builder
+    public static class Redacao {
+        Long id;
+        String titulo;
+        String texto;
+        String temaTitulo;
+    }
 }

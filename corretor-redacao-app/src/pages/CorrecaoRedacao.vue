@@ -14,7 +14,6 @@
           <h3><span class="pontuacao">{{ avaliacao.notaFinal }}</span>/1000</h3>
         </v-card-text>
         <v-card-actions>
-          visualizar pontos de melhoria
           <botao-compartilhar @compartilhar="compartilhar"/>
         </v-card-actions>
       </v-card>
@@ -55,6 +54,7 @@
         </div>
       </v-card>
     </v-container>
+
   </div>
 </template>
 <script>
@@ -81,7 +81,10 @@ export default {
   },
   methods: {
     async buscarUltimaAvaliacao() {
-      const resposta = await axios.get(`http://localhost/corretor-redacao/api/redacao/avaliar/buscar/ultima/${this.$route.params.idRedacao}`)
+      const baseUrl = `${window.location.origin}/corretor-redacao/api`
+      const url = `${baseUrl}/redacao/avaliar/buscar/ultima/${this.$route.params.idRedacao}`
+
+      const resposta = await axios.get(url)
       this.avaliacao = resposta.data
       console.log(this.avaliacao)
     },

@@ -50,6 +50,7 @@ public class Redacao implements Serializable {
     public enum Situacao {
         PENDENTE,
         EM_AVALIACAO,
+        EM_CORRECAO,
         AVALIADA,
         EM_ELABORACAO,
         FINALIZADA

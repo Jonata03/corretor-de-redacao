@@ -94,7 +94,7 @@ export default {
       this.$router.push('/correcao-redacao/' + this.redacao.id)
     },
     async salvarCorrecao(){
-      return await axios.post(`http://localhost/corretor-redacao/api/redacao/avaliar/${this.redacao.id}`, this.teste)
+      return await axios.put(`http://localhost/corretor-redacao/api/redacao/avaliar/${this.redacao.id}`, this.teste)
     },
     async salvarRedacao() {
       return await axios.put(`http://localhost/corretor-redacao/api/redacao/escrita/editar/${this.redacao.id}`, {

@@ -3,7 +3,6 @@ package br.com.corretorredacao.gateway.dataprovider;
 import br.com.corretorredacao.domain.entity.Avaliacao;
 import br.com.corretorredacao.domain.gateway.dataprovider.AvaliacaoDataProvider;
 import br.com.corretorredacao.gateway.dataprovider.repository.AvaliacaoRepository;
-import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

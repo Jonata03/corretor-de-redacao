@@ -22,6 +22,8 @@ services:
   corretor-redacao-api:
     build: ./corretor-redacao-api
     container_name: corretor-redacao-api
+    ports:
+      - "8080:8080"
     depends_on:
       mysql:
         condition: service_healthy
@@ -38,11 +40,13 @@ services:
     build: corretor-redacao-app
     container_name: corretor-redacao-app
     ports:
-      - "5173:80"
+      - "8081:80"
     depends_on:
       - corretor-redacao-api
     networks:
       - app-network
+    environment:
+      - VITE_BACKEND=http://localhost:8080
 
 volumes:
   mysql-data:

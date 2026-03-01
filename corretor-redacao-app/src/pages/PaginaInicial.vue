@@ -20,7 +20,7 @@
       <v-card class="flex-grow-1 mr-5" rounded="xl">
         <v-card-item>
           <v-card-title class="texto-card">REDAÇÕES</v-card-title>
-          <v-card-text class="texto-card-destacado pa-0">{{ (quantidadeRedacoes()) }}</v-card-text>
+          <v-card-text class="texto-card-destacado pa-0">{{ redacaoQtd }}</v-card-text>
           <v-card-subtitle class="texto-card">redações corrigidas</v-card-subtitle>
         </v-card-item>
       </v-card>
@@ -42,7 +42,7 @@
               icon="$info"
               theme="dark"
               :border="'start'"
-              v-if="rascunhos.length === 0"
+              v-if="redacoes.length === 0"
           >
             Não há rascunhos
           </v-alert>
@@ -57,43 +57,34 @@
   </v-container>
 </template>
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      rascunhos: [
-        {
-          titulo: 'Desafios para a valorização da herança africana no Brasil',
-          texto: 'asdfasd fdsaa das d daa',
-        },
-        {
-          titulo: 'Desafios para a valorização de comunidades e povos tradicionais no Brasil',
-          texto: 'fsadfasf fadsfas asdsa gdfv asaasaa da aswdd',
-        },
-      ],
-      redacoes: [
-        // {
-        //   titulo: 'Primeira Submissão',
-        //   nota: 1000
-        // },
-        // {
-        //   titulo: 'Testando Funcionalidades',
-        //   nota: 600
-        // }
-      ]
+      redacoes: [],
+      redacaoQtd: null,
+      uri: import.meta.env.VITE_BACKEND
     }
   },
+  mounted() {
+     this.buscarRedacoes()
+  },
   methods: {
-    notaMediaRedacoes() {
-      if (this.quantidadeRedacoes() === 0) return 0
-      let media = 0;
-      for (let redacao of this.redacoes) {
-        media += redacao.nota;
-      }
-      return media / this.redacoes.length;
+    async buscarRedacoes() {
+      const baseUrl = `${this.uri}/corretor-redacao/api`
+
+      const resposta = await axios.get(`${this.uri}/redacao/buscar`)
+      this.redacoes = resposta.data.redacoes
+      this.redacaoQtd = this.redacoes.length
+
     },
-    quantidadeRedacoes() {
-      return this.redacoes.length
-    }
+    notaMediaRedacoes() {
+      if (this.redacaoQtd === 0) return 0
+      let media = 0;
+
+      return media / this.redacaoQtd;
+    },
   }
 }
 </script>

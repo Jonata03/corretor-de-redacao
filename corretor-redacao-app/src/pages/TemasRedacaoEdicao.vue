@@ -43,7 +43,6 @@ export default {
     };
   },
   async mounted() {
-    console.log('renderizou')
     this.redacaoId = this.$route.params.id
     await this.buscarTemasDisponiveis();
   },
@@ -52,7 +51,7 @@ export default {
       buscarTemasRedacao: actionTypes.TEMA.BUSCAR_TEMAS
     }),
     async buscarTemasDisponiveis() {
-      const temas = await axios.get('http://localhost/corretor-redacao/api/redacao/temas');
+      const temas = await axios.get('http://localhost:8080/corretor-redacao/api/redacao/temas');
       this.temas = temas.data.tema;
       this.inserirImagens(temas.data.tema)
     },

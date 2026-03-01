@@ -140,10 +140,3 @@ insert into tb_tema_texto_informativo (tm_id, tx_id)
         (1, 7);
 
 COMMIT;
-
-# drop table  corretor_redacao.tb_avaliacao;
-# drop table  corretor_redacao.tb_redacao;
-# drop table  corretor_redacao.tb_tema_texto_informativo;
-# drop table  corretor_redacao.tb_textos_informativos;
-# drop table  corretor_redacao.tb_tema;
-# drop database corretor_redacao;

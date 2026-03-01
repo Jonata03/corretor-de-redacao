@@ -51,7 +51,7 @@ export default {
     }),
     async buscarTemasDisponiveis() {
       this.redacao.id = this.$route.params.id
-      const temas = await axios.get('http://localhost/corretor-redacao/api/redacao/temas');
+      const temas = await axios.get('http://localhost:8080/corretor-redacao/api/redacao/temas');
       this.temas = temas.data.tema;
       this.inserirImagens(temas.data.tema)
     },
@@ -95,7 +95,7 @@ export default {
           temaId: this.temaSelecionado.id
         });
       }
-      this.$router.push(`/escrever/${this.redacao.id}`);
+      this.$router.replace(`/escrever/${this.redacao.id}`);
     },
     async salvarRedacao() {
 

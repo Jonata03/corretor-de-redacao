@@ -15,7 +15,7 @@ public class AvaliarRedacaoController {
 
     private final AvaliarRedacaoUseCase avaliarRedacaoUseCase;
 
-    @PostMapping
+    @PutMapping
     @Transactional
     public AvaliarRedacaoOutputData execute(@PathVariable("redacaoId") Long redacaoId, @RequestBody AvaliarRedacaoInputData inputData){
         inputData.setRedacaoId(redacaoId);
